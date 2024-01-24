@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KHS | Registration Form</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <ul class="steps step-one">
+        <li class="step1 all-steps">
+          <div class="list-num lists-active">1</div>
+          <div class="side-content">
+            <p>Step 1</p>
+            <div class="info">Your info</div>
+          </div>
+        </li>
+        <li class="step2 all-steps">
+          <div class="list-num">2</div>
+          <div class="side-content">
+            <p>Step 2</p>
+            <div class="info">Additional</div>
+          </div>
+        </li>
+        <li class="step3 all-steps">
+          <div class="list-num">3</div>
+          <div class="side-content">
+            <p>Step 3</p>
+            <div class="info">Image</div>
+          </div>
+        </li>
+        <li class="step4 all-steps">
+          <div class="list-num">4</div>
+          <div class="side-content">
+            <p>Step 4</p>
+            <div class="info">Password</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <form action="#" method="post" id="myForm" enctype="multipart/form-data" novalidate>
+        <div class="step-one-container">
+          <!-- Step 1 start -->
+          <div class="header-sec">
+            <h1 class="title">Personal info</h1>
+            <p class="info-p">
+              Please provide your name, email address, and phone number.
+            </p>
+          </div>
+          <div class="input-container">
+            <div class="input-content">
+              <div class="label-container">
+                <label for="name">Name</label>
+              </div>
+              <input type="text" name="fullname" value="" placeholder="e.g. Stephen King" class="inputs" id="name" />
+            </div>
+            <div class="input-content">
+              <div class="label-container">
+                <label for="email">Email Address</label>
+              </div>
+              <input type="email" placeholder="e.g. stephenking@lorem.com" name="email" class="inputs" id="email" />
+            </div>
+            <div class="input-content">
+              <div class="label-container">
+                <label for="phone">Phone Number</label>
+              </div>
+              <input type="tel" name="phoneNum" placeholder="e.g. +1 234 567 890" class="inputs" id="phone" />
+            </div>
+            <div class="input-content">
+              <div class="label-container">
+                <label for="age">Age</label>
+                <!-- <span class="error-feild" data-error-feild>This field is required</span> -->
+              </div>
+              <input type="number" name="age" placeholder="Enter your age" class="inputs" id="age" />
+            </div>
+          </div>
+          <div class="btns">
+            <button class="next-step">Next Step</button>
+          </div>
+        </div>
+        <div class="step-two-container hidden">
+          <!-- Step 1 start -->
+          <div class="header-sec">
+            <h1 class="title">Additional Details</h1>
+            <p class="info-p">
+              Please provide your additional info
+            </p>
+          </div>
+          <div class="input-container">
+            <div class="input-content">
+              <div class="label-container">
+                <label for="name">Address</label>
+              </div>
+              <input type="text" name="fullname" value="" placeholder="Please enter your full address" class="inputs"
+                id="name" />
+            </div>
+            <div class="input-content">
+              <div class="label-container">
+                <label for="area">Area</label>
+              </div>
+              <select name="area" id="">
+                <option value="" selected>Select Your Area</option>
+                <option value="">Kalanki</option>
+                <option value="">Thankot</option>
+                <option value="">Satungal</option>
+                <option value="">Bafal</option>
+                <option value="">Sitapaila</option>
+              </select>
+            </div>
+            <div class="input-content">
+              <div class="label-container">
+                <label for="gender">Gender</label>
+              </div>
+              <select name="gender" id="">
+                <option value="" selected>Select Your Gender</option>
+                <option value="">Male</option>
+                <option value="">Female</option>
+
+              </select>
+            </div>
+            <div class="input-content">
+              <div class="label-container">
+                <label for="phone">Profession</label>
+              </div>
+              <select name="area" id="">
+                <option value="">Select Your Profession</option>
+                <option value="">Plumber</option>
+                <option value="">Electrician</option>
+                <option value="">Carpenter</option>
+                <option value="">Painter</option>
+              </select>
+            </div>
+          </div>
+          <div class="btn-container">
+            <button class="next-step btns2 stagebtn2b" id="towbtn">Next Step</button>
+            <button class="go-back btns2 stagebtn2a" id="goBack">Go Back</button>
+          </div>
+        </div>
+        <div class="step-three-container hidden">
+          <!-- Step 1 start -->
+          <div class="header-sec">
+            <h1 class="title">Image Details</h1>
+            <p class="info-p">
+              Please provide us with your passport size photo
+            </p>
+          </div>
+          <div class="input-container">
+
+            <div class="input-content">
+              <div class="label-container">
+                <label for="phone">Photo</label>
+              </div>
+              <input type="file" name="image" placeholder="Please tell us what you work as" class="inputs" id="phone" />
+            </div>
+          </div>
+          <div class="btn-container">
+            <button class="next-step btns2 stagebtn3b" id="towbtn">Next Step</button>
+            <button class="go-back btns2 stagebtn3a" id="goBack">Go Back</button>
+          </div>
+        </div>
+        <div class="step-four-container hidden">
+          <!-- Step 1 start -->
+          <div class="header-sec">
+            <h1 class="title">Create Password</h1>
+            <p class="info-p">
+              Create a password with given instructions
+            </p>
+          </div>
+          <div class="input-container">
+
+            <div class="input-content">
+              <div class="label-container">
+                <label for="phone">Password</label>
+              </div>
+              <input type="password" name="password" placeholder="Create a password" class="inputs" id="phone" />
+            </div>
+          </div>
+          <div class="btn-container">
+            <input type="submit" value="submit" id="submitBtn">
+            <button class="go-back btns2 stagebtn4a" id="goBack">Go Back</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- <script src="js/script.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+  
+
+
+</body>
+
+</html>
