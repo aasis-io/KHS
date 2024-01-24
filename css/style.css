@@ -227,3 +227,26 @@ form{
 .hidden{
   display: none;
 }
+
+
+.password-requirement{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.requirementBox{
+  display: flex;
+  place-items: center;
+  gap: 4px;
+}
+.requirementBox > i{
+  transform: rotate(180deg);
+  color: var(--CoolGray);
+
+}
+
+.requirementBox > p{
+  font-size: 14px;
+  color: var(--CoolGray);
+}
