@@ -5,7 +5,6 @@ function togglePassword() {
   passwordInputField.type = passwordToggleButton.checked ? "text" : "password";
 }
 
-
 function alertCloser() {
   var alertBoxes = document.querySelectorAll(".alert");
 
@@ -14,3 +13,6 @@ function alertCloser() {
     alertBox.classList.add("alertClosed");
   });
 }
+
+
+

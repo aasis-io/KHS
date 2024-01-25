@@ -10,7 +10,7 @@ if (isset($_GET['v'])) {
 $pattern = '/^(98[4-9]|97[7-9]|96[6-9])\d{7}$/';
 if (isset($_POST['submit'])) {
 
-  $emptyName = $emptyAge = $emptyEmail = $emptyPhone = $emptyGender = $emptyOccupation = $emptyArea = $emptyAddress = $emptyPassword = $invalidEmail = $invalidPhone = $imageError = $invalidPasswordLength = $invalidPassword = '';
+  $emptyName = $emptyAge = $emptyEmail = $emptyPhone = $emptyGender = $emptyOccupation = $emptyArea = $emptyAddress = $emptyPassword = $invalidEmail = $invalidPhone = $invalidPasswordLength = $invalidPassword = '';
 
   if (empty($_POST['fullname'])) {
     $emptyName = "Name Field Empty!";
@@ -48,14 +48,33 @@ if (isset($_POST['submit'])) {
     $emptyAddress = "Address Field Empty!";
   }
 
+  if (empty($_FILES['image']['name'])) {
+    $imageError = "Image Not Selected!";
+  } elseif ($_FILES['image']['error'] == 0) {
+    if (
+      $_FILES['image']['type'] == "image/png" ||
+      $_FILES['image']['type'] == "image/jpg" ||
+      $_FILES['image']['type'] == "image/jpeg"
+    ) {
+      if ($_FILES['image']['size'] <= 1024 * 1024) {
+        $imageName = uniqid() . $_FILES['image']['name'];
+        move_uploaded_file($_FILES['image']['tmp_name'], 'images/' . $imageName);
+        $user->set('image', $imageName);
+      } else {
+        $imageError = "Error, Exceeded 1mb!";
+      }
+    } else {
+      $imageError = "Invalid Image!";
+    }
+  }
+
+
   if (empty($_POST['password'])) {
     $emptyPassword = "Password Field Empty!";
   } elseif (strlen($_POST['password']) < 8) {
     $invalidPasswordLength = "Minimum Password Length is 8!";
   }
-  //  elseif ($_POST['password'] != $_POST['confirmPassword']) {
-  //     $invalidPassword = "Password Doesn't Match!";
-  // }
+
 
   if (empty($emptyName) && empty($emptyAge) && empty($emptyEmail) && empty($emptyPhone) && empty($emptyGender) && empty($emptyOccupation) && empty($emptyArea) && empty($emptyAddress) && empty($emptyPassword) && empty($invalidEmail) && empty($invalidPhone) && empty($invalidPasswordLength) && empty($invalidPassword)) {
 
@@ -67,33 +86,10 @@ if (isset($_POST['submit'])) {
     $user->set('occupation', $_POST['occupation']);
     $user->set('area', $_POST['area']);
     $user->set('address', $_POST['address']);
-    if (empty($_FILES['image']['name'])) {
-      $imageError = "Image Field Empty!";
-    } elseif ($_FILES['image']['error'] == 0) {
-      if (
-        $_FILES['image']['type'] == "image/png" ||
-        $_FILES['image']['type'] == "image/jpg" ||
-        $_FILES['image']['type'] == "image/jpeg"
-      ) {
-        if ($_FILES['image']['size'] <= 1024 * 1024) {
-          $imageName = uniqid() . $_FILES['image']['name'];
-          move_uploaded_file(
-            $_FILES['image']['tmp_name'],
-            'images/' . $imageName
-          );
-          $user->set('image', $imageName);
-        } else {
-          $imageError = "Error, Exceeded 1mb!";
-        }
-      } else {
-        $imageError = "Invalid Image!";
-      }
-    }
+
 
     $user->set('password', $_POST['password']);
 
-    echo $imageError;
-    echo $fullname;
     $user->save();
   }
 }
@@ -158,7 +154,7 @@ if (isset($_POST['submit'])) {
       </ul>
     </div>
     <div class="main-content">
-      <form method="post" enctype="multipart/form-data" novalidate>
+      <form method="post" id="myForm" enctype="multipart/form-data" novalidate>
         <div class="step-one-container">
           <!-- Step 1 start -->
           <div class="header-sec">
@@ -173,7 +169,7 @@ if (isset($_POST['submit'])) {
                 <label for="fullname">Name</label>
                 <?php if (isset($emptyName)) { ?>
 
-                  <small> <?php echo $emptyName; ?> </small>
+                  <small class="error-message"> <?php echo $emptyName; ?> </small>
 
                 <?php } ?>
 
@@ -185,10 +181,10 @@ if (isset($_POST['submit'])) {
               <div class="label-container">
                 <label for="email">Email Address</label>
                 <?php if (isset($invalidEmail)) { ?>
-                  <small> <?php echo $invalidEmail; ?></small>
+                  <small class="error-message"> <?php echo $invalidEmail; ?></small>
                 <?php } ?>
                 <?php if (isset($emptyEmail)) { ?>
-                  <small> <?php echo $emptyEmail; ?></small>
+                  <small class="error-message"> <?php echo $emptyEmail; ?></small>
                 <?php } ?>
               </div>
               <input type="text" placeholder="e.g. example@gmail.com" name="email" class="inputs" required />
@@ -197,11 +193,11 @@ if (isset($_POST['submit'])) {
               <div class="label-container">
                 <label for="phone">Phone Number</label>
                 <?php if (isset($invalidPhone)) { ?>
-                  <small> <?php echo $invalidPhone; ?></small>
+                  <small class="error-message"> <?php echo $invalidPhone; ?></small>
                 <?php } ?>
 
                 <?php if (isset($emptyPhone)) { ?>
-                  <small> <?php echo $emptyPhone; ?></small>
+                  <small class="error-message"> <?php echo $emptyPhone; ?></small>
                 <?php } ?>
               </div>
               <input type="number" name="phone" placeholder="e.g. 9840 000 000" class="inputs" required />
@@ -211,7 +207,7 @@ if (isset($_POST['submit'])) {
                 <label for="age">Age</label>
                 <?php if (isset($emptyAge)) { ?>
 
-                  <small> <?php echo $emptyAge; ?> </small>
+                  <small class="error-message"> <?php echo $emptyAge; ?> </small>
 
                 <?php } ?>
               </div>
@@ -235,7 +231,7 @@ if (isset($_POST['submit'])) {
               <div class="label-container">
                 <label for="address">Address</label>
                 <?php if (isset($emptyAddress)) { ?>
-                  <small> <?php echo $emptyAddress; ?></small>
+                  <small class="error-message"> <?php echo $emptyAddress; ?></small>
                 <?php } ?>
               </div>
               <input type="text" name="address" placeholder="Please enter your full address" class="inputs" required />
@@ -244,7 +240,7 @@ if (isset($_POST['submit'])) {
               <div class="label-container">
                 <label for="area">Area</label>
                 <?php if (isset($emptyArea)) { ?>
-                  <small> <?php echo $emptyArea; ?></small>
+                  <small class="error-message"> <?php echo $emptyArea; ?></small>
                 <?php } ?>
               </div>
               <select name="area" required>
@@ -260,7 +256,7 @@ if (isset($_POST['submit'])) {
               <div class="label-container">
                 <label for="gender">Gender</label>
                 <?php if (isset($emptyGender)) { ?>
-                  <small> <?php echo $emptyGender; ?></small>
+                  <small class="error-message"> <?php echo $emptyGender; ?></small>
                 <?php } ?>
               </div>
               <select name="gender" required>
@@ -274,7 +270,7 @@ if (isset($_POST['submit'])) {
               <div class="label-container">
                 <label for="occupation">Profession</label>
                 <?php if (isset($emptyOccupation)) { ?>
-                  <small> <?php echo $emptyOccupation; ?></small>
+                  <small class="error-message"> <?php echo $emptyOccupation; ?></small>
                 <?php } ?>
               </div>
               <select name="occupation" required>
@@ -305,14 +301,11 @@ if (isset($_POST['submit'])) {
               <div class="label-container">
                 <label for="image">Photo</label>
                 <?php if (isset($imageError)) { ?>
-                  <small> <?php echo $imageError; ?></small>
+                  <small class="error-message"> <?php echo $imageError; ?></small>
                 <?php } ?>
 
               </div>
 
-              <div class="error-message">
-                <?php echo $imageError; ?>
-              </div>
 
 
               <input type="file" name="image" class="inputs" required />
@@ -337,10 +330,10 @@ if (isset($_POST['submit'])) {
               <div class="label-container">
                 <label for="password">Password</label>
                 <?php if (isset($emptyPassword)) { ?>
-                  <small> <?php echo $emptyPassword; ?></small>
+                  <small class="error-message"> <?php echo $emptyPassword; ?></small>
                 <?php } ?>
                 <?php if (isset($invalidPasswordLength)) { ?>
-                  <small> <?php echo $invalidPasswordLength; ?></small>
+                  <small class="error-message"> <?php echo $invalidPasswordLength; ?></small>
                 <?php } ?>
               </div>
               <input type="password" name="password" id="passwordField" placeholder="Create a password" class="inputs" required />
