@@ -8,6 +8,10 @@ if (isset($_GET['v'])) {
 }
 
 $pattern = '/^(98[4-9]|97[7-9]|96[6-9])\d{7}$/';
+
+$passPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/';
+
+
 if (isset($_POST['submit'])) {
 
   $emptyName = $emptyAge = $emptyEmail = $emptyPhone = $emptyGender = $emptyOccupation = $emptyArea = $emptyAddress = $emptyPassword = $invalidEmail = $invalidPhone = $invalidPasswordLength = $invalidPassword = '';
@@ -58,8 +62,13 @@ if (isset($_POST['submit'])) {
     ) {
       if ($_FILES['image']['size'] <= 1024 * 1024) {
         $imageName = uniqid() . $_FILES['image']['name'];
-        move_uploaded_file($_FILES['image']['tmp_name'], 'images/' . $imageName);
-        $user->set('image', $imageName);
+        if (move_uploaded_file($_FILES['image']['tmp_name'], 'images' . DIRECTORY_SEPARATOR . $imageName)) {
+          $user->set('image', $imageName);
+        } else {
+          $imageError = "Error moving uploaded file: " . error_get_last()['message'];
+          file_put_contents('upload_debug.log', $imageError . PHP_EOL, FILE_APPEND);
+        }
+        // $user->set('image', $imageName);
       } else {
         $imageError = "Error, Exceeded 1mb!";
       }
@@ -71,8 +80,8 @@ if (isset($_POST['submit'])) {
 
   if (empty($_POST['password'])) {
     $emptyPassword = "Password Field Empty!";
-  } elseif (strlen($_POST['password']) < 8) {
-    $invalidPasswordLength = "Minimum Password Length is 8!";
+  } elseif (strlen($_POST['password']) < 8 || !preg_match($passPattern, $_POST['password'])) {
+    $invalidPasswordLength = "Invalid Password!";
   }
 
 
@@ -308,8 +317,9 @@ if (isset($_POST['submit'])) {
 
 
 
-              <input type="file" name="image" class="inputs" required />
+              <input type="file" name="image" class="inputs" id="image" required />
             </div>
+            <div id="imageContainer"></div>
           </div>
           <div class="btn-container">
             <button class="next-step btns2 stagebtn3b" id="towbtn">Next Step</button>
@@ -456,6 +466,24 @@ if (isset($_POST['submit'])) {
       step4btn.classList.remove("lists-active");
     }
     stagebtn4a.addEventListener("click", stage4to3);
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var imageInput = document.getElementById("image");
+      var inputContainer = document.getElementById("imageContainer");
+
+      imageInput.addEventListener("change", function(event) {
+        var file = event.target.files[0];
+
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(event) {
+            inputContainer.innerHTML = '<img src="' + event.target.result + '" alt="Uploaded Image"/> <br> <p style="color:red;"> To change the image again click on the "Change File" button! </p>';
+          }
+          reader.readAsDataURL(file);
+        }
+      })
+    });
   </script>
 
 
