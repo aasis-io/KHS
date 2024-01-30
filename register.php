@@ -95,8 +95,6 @@ if (isset($_POST['submit'])) {
     $user->set('occupation', $_POST['occupation']);
     $user->set('area', $_POST['area']);
     $user->set('address', $_POST['address']);
-
-
     $user->set('password', $_POST['password']);
 
     $user->save();

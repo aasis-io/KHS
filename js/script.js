@@ -7,12 +7,10 @@ function togglePassword() {
 
 function alertCloser() {
   var alertBoxes = document.querySelectorAll(".alert");
-
-  // Use forEach to add the "alertClosed" class to each element
   alertBoxes.forEach(function (alertBox) {
     alertBox.classList.add("alertClosed");
   });
 }
 
-
-
+var passwordHidden = document.getElementById("password-hidden"),
+  passwordShown = document.getElementById("password-shown");
