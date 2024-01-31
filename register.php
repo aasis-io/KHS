@@ -381,6 +381,10 @@ if (isset($_POST['submit'])) {
     </div>
   </div>
 
+  <p class="loginLink">Already Registered? <a href="login.php">LogIn Here</a></p>
+
+
+
   <script src="js/script.js"></script>
   <script>
     let stagebtn1 = document.querySelector(".next-step"),

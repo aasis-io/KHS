@@ -22,7 +22,7 @@
                 <div class="label-container">
                     <label for="password">Password</label>
                 </div>
-                <input type="password" name="password" placeholder="Enter your password" class="inputs" required />
+                <input type="password" name="password" placeholder="Enter your password" class="inputs" id="passwordField" required />
                 <i class="fa-solid fa-eye-slash" id="password-hidden"></i>
                 <i class="fa-solid fa-eye hide" id="password-shown"></i>
 
