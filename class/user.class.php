@@ -28,7 +28,10 @@ class User extends Common
     public function login()
     {
         $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
-        $sql = "select * from users where email='$this->email' and password='$this->password'";
+        $encryptedPassword = md5($this->password);
+        $sql = "select * from users where 
+                 email='$this->email' and 
+                 password='$encryptedPassword'";
         $var = $conn->query($sql);
         if ($var->num_rows > 0) {
             $data = $var->fetch_object();
@@ -37,6 +40,7 @@ class User extends Common
             $_SESSION['fullname'] = $data->fullname;
             $_SESSION['email'] = $data->email;
             $_SESSION['role'] = $data->role;
+            setcookie('email',$data->email, time() + 60 * 60);
             header('Location:index.php?v="Logged In Successfully!"');
         }
         else{

@@ -27,3 +27,9 @@ passwordShown.addEventListener("click", function () {
   passwordHidden.classList.remove("hide");
   passwordField.type = "password";
 });
+
+var alertContainer = document.getElementById("alertContainer");
+
+setTimeout(function () {
+  alertContainer.style.display = "none";
+}, 5000);

@@ -21,7 +21,7 @@ if (isset($_GET['v'])) {
 
 
     <?php if (isset($msg)) { ?>
-        <div class="alert-container">
+        <div class="alert-container" id="alertContainer">
             <div class="alert alert-success"><?php echo $msg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
         </div> <?php  } ?>
 
@@ -29,6 +29,16 @@ if (isset($_GET['v'])) {
     <a href="register.php">Hello! Let's go back.</a>
 
     <script src="js/script.js"></script>
+    <script>
+        var alertContainer = document.getElementById("alertContainer");
+
+        setTimeout(function() {
+            alertContainer.style.opacity = "0";
+        }, 5000);
+        setTimeout(function() {
+            alertContainer.style.display = "none";
+        }, 6000);
+    </script>
 </body>
 
 </html>
