@@ -22,7 +22,6 @@ passwordHidden.addEventListener("click", function () {
   passwordField.type = "text";
 });
 
-
 passwordShown.addEventListener("click", function () {
   passwordShown.classList.add("hide");
   passwordHidden.classList.remove("hide");

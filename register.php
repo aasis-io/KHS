@@ -68,7 +68,6 @@ if (isset($_POST['submit'])) {
           $imageError = "Error moving uploaded file: " . error_get_last()['message'];
           file_put_contents('upload_debug.log', $imageError . PHP_EOL, FILE_APPEND);
         }
-        // $user->set('image', $imageName);
       } else {
         $imageError = "Error, Exceeded 1mb!";
       }
@@ -85,7 +84,7 @@ if (isset($_POST['submit'])) {
   }
 
 
-  if (empty($emptyName) && empty($emptyAge) && empty($emptyEmail) && empty($emptyPhone) && empty($emptyGender) && empty($emptyOccupation) && empty($emptyArea) && empty($emptyAddress) && empty($emptyPassword) && empty($invalidEmail) && empty($invalidPhone) && empty($invalidPasswordLength) && empty($invalidPassword)) {
+  if (empty($emptyName) && empty($emptyAge) && empty($emptyEmail) && empty($emptyPhone) && empty($emptyGender) && empty($emptyOccupation) && empty($emptyArea) && empty($emptyAddress) && empty($emptyPassword) && empty($invalidEmail) && empty($invalidPhone) && empty($imageError) && empty($invalidPasswordLength) && empty($invalidPassword)) {
 
     $user->set('fullname', $_POST['fullname']);
     $user->set('email', $_POST['email']);
@@ -98,6 +97,10 @@ if (isset($_POST['submit'])) {
     $user->set('password', $_POST['password']);
 
     $user->save();
+  }
+
+  else {
+    $globalError = "Something went wrong! Please Check All the Fields!";
   }
 }
 ?>
@@ -126,6 +129,11 @@ if (isset($_POST['submit'])) {
       <div class="alert-container">
         <div class="alert alert-danger"><?php echo $ErrMsg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
       </div> <?php  } ?>
+
+      <?php if (isset($globalError)) {?>
+      <div class="alert-container">
+        <div class="alert alert-danger"><?php echo $globalError;?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+      </div> <?php  }?>
 
 
     <div class="sidebar">
@@ -480,7 +488,7 @@ if (isset($_POST['submit'])) {
         if (file) {
           var reader = new FileReader();
           reader.onload = function(event) {
-            inputContainer.innerHTML = '<img src="' + event.target.result + '" alt="Uploaded Image"/> <br> <p style="color:red;"> To change the image again click on the "Change File" button! </p>';
+            inputContainer.innerHTML = '<img src="' + event.target.result + '" alt="Uploaded Image"/> <br> <p style="color:red;"> To change the image again click on the "Choose File" button! </p>';
           }
           reader.readAsDataURL(file);
         }

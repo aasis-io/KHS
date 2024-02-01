@@ -3,6 +3,7 @@
 abstract class Common
 {
     abstract function save();
+    abstract function login();
     // abstract function retrieve();
     // abstract function edit();
     // abstract function delete();

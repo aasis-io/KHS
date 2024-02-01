@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +14,7 @@
 <body>
     <div class="form-container">
         <h2>Login</h2>
-        <form action="" novalidate>
+        <form method="post" action="login_validate.php" novalidate>
             <div class="input-content">
                 <div class="label-container">
                     <label for="email">Email</label>
@@ -27,7 +30,7 @@
                 <i class="fa-solid fa-eye hide" id="password-shown"></i>
 
             </div>
-            <button type="submit">Sign In</button>
+            <button type="submit" name="submit">Sign In</button>
         </form>
         <p>Not Registered? <a href="register.php">Sign Up Here</a></p>
     </div>

@@ -277,6 +277,14 @@ small {
   background-color: #b6f7b1;
   color: #01862e;
 }
+.alert-danger {
+  background-color: #faced2;
+  color: #721c24;
+}
+
+.alert-danger > button {
+  color: #721c24;
+}
 
 .alert-success > button {
   color: #01862e;
@@ -308,12 +316,6 @@ small {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   z-index: 999;
   border-radius: 8px;
-}
-
-.loginLink {
-  /* position: absolute; */
-  /* left: 50%;
-  transform: translateX(-50%); */
 }
 
 /*Login Page CSS*/

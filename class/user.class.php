@@ -5,7 +5,7 @@ require_once('common.class.php');
 class User extends Common
 {
     public $id, $fullname, $email, $age,
-        $phone, $gender, $occupation, $area, $address, $image, $password;
+        $phone, $gender, $occupation, $area, $address, $image, $password, $role;
 
     public function save()
     {
@@ -15,7 +15,7 @@ class User extends Common
                '$this->phone','$this->gender', '$this->occupation', '$this->area', '$this->address', '$this->image', '$this->password')";
 
         $conn->query($sql);
-        
+
         if ($conn->affected_rows == 1 && $conn->insert_id > 0) {
             // return $conn->insert_id;
             header('Location:index.php?v="Registered Successfully"');
@@ -23,6 +23,28 @@ class User extends Common
             header('Location:register.php?v="Error Occured!"');
             return false;
         }
+    }
+
+    public function login()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "select * from users where email='$this->email' and password='$this->password'";
+        $var = $conn->query($sql);
+        if ($var->num_rows > 0) {
+            $data = $var->fetch_object();
+            @session_start();
+            $_SESSION['id'] = $data->id;
+            $_SESSION['fullname'] = $data->fullname;
+            $_SESSION['email'] = $data->email;
+            $_SESSION['role'] = $data->role;
+            header('Location:index.php?v="Logged In Successfully!"');
+        }
+        else{
+            $error = "Invalid Credentials!";
+            return $error;
+        }
+       
+
     }
 
 
