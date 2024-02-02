@@ -3,6 +3,9 @@
 if (isset($_GET['v'])) {
     $msg = $_GET['v'];
 }
+
+@session_start();
+
 ?>
 
 
@@ -27,6 +30,14 @@ if (isset($_GET['v'])) {
 
 
     <a href="register.php">Hello! Let's go back.</a>
+
+    <?php if (isset($_SESSION['email'])) {
+    ?>
+        <a href="logout.php">LogOut!</a>
+    <?php } else { ?>
+        <a href="login.php">Login</a>
+    <?php } ?>
+
 
     <script src="js/script.js"></script>
     <script>
