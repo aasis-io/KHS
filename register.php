@@ -117,6 +117,8 @@ if (isset($_POST['submit'])) {
   <title>KHS | Registration Form</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/common.min.css">
+
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>

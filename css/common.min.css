@@ -1,0 +1,53 @@
+
+.alert {
+    display: flex;
+    place-items: center;
+    border-radius: 8px;
+    justify-content: space-between;
+    padding: 0.8rem 2rem;
+  }
+  .alert-success {
+    background-color: #b6f7b1;
+    color: #01862e;
+  }
+  .alert-danger {
+    background-color: #faced2;
+    color: #721c24;
+  }
+  
+  .alert-danger > button {
+    color: #721c24;
+  }
+  
+  .alert-success > button {
+    color: #01862e;
+  }
+  
+  .alertClosed {
+    display: none !important;
+  }
+  
+  .alert button {
+    border: none;
+    background: none;
+    display: flex;
+    cursor: pointer;
+  }
+  
+  .alert button > i {
+    font-size: 32px;
+  }
+  
+  .alert-container {
+    max-width: 900px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1rem;
+    /* width: 900px; */
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    border-radius: 8px;
+    transition: opacity 1s ease;
+  }
