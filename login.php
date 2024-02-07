@@ -78,6 +78,7 @@ if (isset($_POST['submit'])) {
         </form>
         <p>Not Registered? <a href="register.php">Sign Up Here</a></p>
     </div>
+    <a href="index.php" class="homeRedirect">Go To Home Page &nbsp;<i class="fa-solid fa-up-right-from-square"></i></a>
 
     <script src="https://kit.fontawesome.com/1f2d50e34f.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>

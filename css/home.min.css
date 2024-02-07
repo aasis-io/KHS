@@ -9,6 +9,7 @@
   --primary-font: "Poppins", sans-serif;
   --secondary-font: "Rubik", sans-serif;
   --background-clr: hsl(217, 100%, 97%);
+  --piction-clr: #03aec6;
 }
 
 body {
@@ -46,6 +47,8 @@ ul {
 }
 
 .header {
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 1rem 2rem 0 2rem;
   display: flex;
   justify-content: space-between;
@@ -87,7 +90,7 @@ ul {
   color: var(--accent-clr);
 }
 
-.nav-list > li:last-child a {
+.nav-list > li.loginBtn a {
   color: var(--white-clr);
   background: var(--accent-clr);
   border-radius: 6px;
@@ -95,7 +98,7 @@ ul {
   transition: 0.4s ease;
 }
 
-.nav-list > li:last-child a:hover {
+.nav-list > li.loginBtn a:hover {
   background: var(--dark-accent);
 }
 
@@ -201,4 +204,131 @@ a.cta-explore {
 
 a.cta-explore:hover {
   background: var(--dark-accent);
+}
+
+.profile-toggle {
+  position: relative;
+}
+
+.profile-toggle > a {
+  background: none;
+  width: 60px;
+  height: 60px;
+  padding: 0 !important;
+}
+.profile-toggle > a > img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 1rem;
+  border-radius: 8px;
+  background: var(--dark-accent);
+  padding: 4px 4px 8px 4px;
+  padding-left: 16px;
+  display: none;
+  /* visibility: visible; */
+}
+.profile-menu.show {
+  display: block;
+}
+.profile-menu:after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -3px;
+  right: 20px;
+  background: var(--dark-accent);
+  transform: rotate(45deg);
+}
+
+.profile-menu > li {
+  min-width: 140px;
+}
+.profile-menu > li > a {
+  font-size: 18px;
+  padding: 12px 24px 12px 12px;
+  display: block;
+  background: var(--dark-accent);
+  color: var(--white-clr);
+}
+.profile-menu > li > a:hover {
+  color: var(--piction-clr);
+}
+
+/* ==========
+ My Profile CSS 
+=========== */
+
+.userDetail {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  max-width: 340px;
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  background: var(--white-clr);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.profileImg {
+  width: 100px;
+  height: 100%;
+}
+
+.profileImg > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* .allDetail{
+  width: 100%;
+} */
+
+.detail > p {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.detail > p > span {
+  font-weight: 400;
+}
+
+.linkButton {
+  display: flex;
+  gap: 20px;
+  margin-top: 1.25rem;
+}
+
+.linkButton > a {
+  padding: 14px 18px;
+  background: var(--accent-clr);
+  border-radius: 6px;
+  color: var(--white-clr);
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+.linkButton > a:hover {
+  background: var(--dark-accent);
+}
+
+.linkButton > .editButton {
+  color: var(--text-clr);
+  background: #eee;
+}
+
+.linkButton > .editButton:hover {
+  color: var(--piction-clr);
+  background: #eee;
 }

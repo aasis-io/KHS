@@ -392,6 +392,7 @@ if (isset($_POST['submit'])) {
   </div>
 
   <p class="loginLink">Already Registered? <a href="login.php">LogIn Here</a></p>
+  <p class="loginLink homePage"><a href="index.php">Go to Home Page! &nbsp;<i class='bx bx-link-external'></i></a></p>
 
 
 

@@ -40,30 +40,28 @@ class User extends Common
             $_SESSION['fullname'] = $data->fullname;
             $_SESSION['email'] = $data->email;
             $_SESSION['role'] = $data->role;
-            setcookie('email',$data->email, time() + 60 * 60);
+            $_SESSION['image'] = $data->image;
+            setcookie('email', $data->email, time() + 60 * 60);
             header('Location:index.php?v="Logged In Successfully!"');
-        }
-        else{
+        } else {
             $error = "Invalid Credentials!";
             return $error;
         }
-       
-
     }
 
 
-    // public function retrieve()
-    // {
-    //     $conn = mysqli_connect('localhost', 'root', '', 'outsidelime');
-    //     $sql = "select * from slider";
-    //     $var = $conn->query($sql);
-    //     if ($var->num_rows > 0) {
-    //         $datalist = $var->fetch_all(MYSQLI_ASSOC);
-    //         return $datalist;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    public function retrieve()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "select * from users";
+        $var = $conn->query($sql);
+        if ($var->num_rows > 0) {
+            $datalist = $var->fetch_all(MYSQLI_ASSOC);
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
 
 
     // public function edit()
@@ -93,6 +91,19 @@ class User extends Common
     //         return "failed";
     //     }
     // }
+
+    public function getById()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "select * from users where id='$this->id'";
+        $var = $conn->query($sql);
+        if ($var->num_rows > 0) {
+            $data = $var->fetch_object();
+            return $data;
+        } else {
+            return [];
+        }
+    }
 
 
 

@@ -19,9 +19,6 @@ if (isset($_GET['v'])) {
     <link rel="stylesheet" href="css/home.min.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/common.min.css">
-
-
-
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -38,7 +35,7 @@ if (isset($_GET['v'])) {
             <nav>
                 <ul class="nav-list">
                     <li><a href="">Home</a></li>
-                    <li class="dropdown"><a href="">Services<i class='bx bxs-chevron-down'></i></a>
+                    <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
 
                         <ul class="dropdown-menu">
                             <li><a href="">Plumber</a></li>
@@ -52,17 +49,20 @@ if (isset($_GET['v'])) {
                     <li><a href="">Contact Us</a></li>
                     <?php if (isset($_SESSION['email'])) {
                     ?>
-                        <li><a href="">My Profile</a></li>
+                        <li class="profile-toggle">
+                            <a href="#" class="profile-drop"><img src="images/<?php echo $_SESSION['image']; ?>" alt=""></a>
+                            <ul class="profile-menu">
+                                <li><a href="account.php?id=<?php echo $_SESSION['id']?>">Account</a></li>
+                                <li><a href="logout.php">Logout</a></li>
+                            </ul>
+                        </li>
 
                     <?php } else { ?>
 
 
-                        <li><a href="login.php">Sign In</a></li>
+                        <li class="loginBtn"><a href="login.php">Sign In</a></li>
 
                     <?php } ?>
-
-
-
 
                 </ul>
             </nav>
@@ -86,13 +86,6 @@ if (isset($_GET['v'])) {
         </div>
     </div>
 
-    <?php if (isset($_SESSION['email'])) {
-    ?>
-        <a href="logout.php">LogOut!</a>
-    <?php } else { ?>
-        <a href="login.php">Login</a>
-    <?php } ?>
-
     <script src="js/script.js"></script>
 
     <script>
@@ -104,6 +97,25 @@ if (isset($_GET['v'])) {
         setTimeout(function() {
             alertContainer.style.display = "none";
         }, 6000);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const profileDrop = document.querySelector('.profile-drop');
+            const profileMenu = document.querySelector('.profile-menu');
+
+            function toggleProfileMenu() {
+                profileMenu.classList.toggle('show');
+            }
+
+            profileDrop.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default behavior of anchor tag
+                toggleProfileMenu(); // Toggle the display of profile menu
+            });
+            window.addEventListener('click', function(event) {
+                if (!event.target.closest('.profile-toggle')) {
+                    profileMenu.classList.remove('show');
+                }
+            });
+        });
     </script>
 </body>
 
