@@ -104,7 +104,4 @@ class User extends Common
             return [];
         }
     }
-
-
-
 }
