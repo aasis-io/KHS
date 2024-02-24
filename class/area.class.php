@@ -53,17 +53,17 @@ class Area extends Common
     //         return false;
     //     }
     // }
-    // public function delete()
-    // {
-    //     $conn = mysqli_connect('localhost', 'root', '', 'outsidelime');
-    //     $sql = "delete from slider where banner_id='$this->banner_id'";
-    //     $var = $conn->query($sql);
-    //     if ($var) {
-    //         return "success";
-    //     } else {
-    //         return "failed";
-    //     }
-    // }
+    public function delete()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "delete from area where id='$this->id'";
+        $var = $conn->query($sql);
+        if ($var) {
+            return "success";
+        } else {
+            return "failed";
+        }
+    }
 
     // public function getById()
     // {

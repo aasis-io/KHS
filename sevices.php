@@ -1,3 +1,14 @@
+<?php
+@session_start();
+
+if (isset($_GET['v'])) {
+    $msg = $_GET['v'];
+    echo $msg;
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +38,7 @@
                     <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="plumber.php">Plumber</a></li>
+                            <li><a href="sevices.php">Plumber</a></li>
                             <li><a href="">Electrician</a></li>
                             <li><a href="">Carpenter</a></li>
                             <li><a href="">Painter</a></li>
@@ -36,7 +47,8 @@
                     </li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-                    <?php if (isset($_SESSION['email'])) { ?>
+                    <?php if (isset($_SESSION['email'])) {
+                    ?>
                         <li class="profile-toggle">
                             <a href="#" class="profile-drop"><img src="images/<?php echo $_SESSION['image']; ?>" alt=""></a>
                             <ul class="profile-menu">
@@ -44,9 +56,14 @@
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>
                         </li>
+
                     <?php } else { ?>
+
+
                         <li class="loginBtn"><a href="login.php">Sign In</a></li>
+
                     <?php } ?>
+
                 </ul>
             </nav>
         </div>
@@ -58,7 +75,35 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/filter.js"></script>
+    <script>
+        var alertContainer = document.getElementById("alertContainer");
 
+        setTimeout(function() {
+            alertContainer.style.opacity = "0";
+        }, 5000);
+        setTimeout(function() {
+            alertContainer.style.display = "none";
+        }, 6000);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const profileDrop = document.querySelector('.profile-drop');
+            const profileMenu = document.querySelector('.profile-menu');
+
+            function toggleProfileMenu() {
+                profileMenu.classList.toggle('show');
+            }
+
+            profileDrop.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default behavior of anchor tag
+                toggleProfileMenu(); // Toggle the display of profile menu
+            });
+            window.addEventListener('click', function(event) {
+                if (!event.target.closest('.profile-toggle')) {
+                    profileMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

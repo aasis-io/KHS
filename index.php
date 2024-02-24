@@ -1,10 +1,11 @@
 <?php
+@session_start();
 
 if (isset($_GET['v'])) {
     $msg = $_GET['v'];
+    echo $msg;
 }
 
-@session_start();
 
 ?>
 
@@ -31,7 +32,7 @@ if (isset($_GET['v'])) {
 
     <div id="wrapper">
         <div class="header">
-            <div class="logo"><img src="images/logo.png" alt=""></div>
+            <a class="logo" href="index.php"><img src="images/logo.png" alt=""></a>
             <nav>
                 <ul class="nav-list">
                     <li><a href="">Home</a></li>
@@ -52,7 +53,7 @@ if (isset($_GET['v'])) {
                         <li class="profile-toggle">
                             <a href="#" class="profile-drop"><img src="images/<?php echo $_SESSION['image']; ?>" alt=""></a>
                             <ul class="profile-menu">
-                                <li><a href="account.php?id=<?php echo $_SESSION['id']?>">Account</a></li>
+                                <li><a href="account.php?id=<?php echo $_SESSION['id'] ?>">Account</a></li>
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>
                         </li>

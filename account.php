@@ -7,6 +7,7 @@ $user = new User();
 $user->set('id', $_GET['id']);
 $retrieveUser = $user->getById();
 
+
 ?>
 
 <!DOCTYPE html>
