@@ -12,7 +12,7 @@ class User extends Common
         $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
         $sql = "insert into users(fullname, email, age, phone, gender, 
                occupation, area, address, image, password) values('$this->fullname','$this->email','$this->age',
-               '$this->phone','$this->gender', '$this->occupation', '$this->area', '$this->address', '$this->image', '$this->password')";
+               '$this->phone','$this->gender', '$this->occupation', '$this->area', '$this->address', '$this->image', MD5('$this->password'))";
 
         $conn->query($sql);
 

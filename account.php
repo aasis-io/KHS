@@ -57,7 +57,7 @@ $retrieveUser = $user->getById();
                     </div>
 
                     <div class="detail linkButton">
-                        <a href="index.php"><i class="fa-solid fa-arrow-left"></i> &nbsp;Go Back</a>
+                        <a href="deleteAccount.php" style="background: red;"><i class="fa-solid fa-trash"></i> &nbsp;Delete Account</a>
                         <a href="editUser.php" class="editButton"><i class="fa-solid fa-pen-to-square"></i> &nbsp;Edit Details</a>
                     </div>
                 </div>

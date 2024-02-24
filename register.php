@@ -1,5 +1,16 @@
 <?php
 include('class/user.class.php');
+include('class/area.class.php');
+include('class/profession.class.php');
+
+
+$area = new Area();
+
+$areaList = $area->retrieve();
+
+$profession = new Profession();
+
+$professionList = $profession->retrieve();
 
 $user = new User();
 
@@ -97,9 +108,7 @@ if (isset($_POST['submit'])) {
     $user->set('password', $_POST['password']);
 
     $user->save();
-  }
-
-  else {
+  } else {
     $globalError = "Something went wrong! Please Check All the Fields!";
   }
 }
@@ -132,10 +141,10 @@ if (isset($_POST['submit'])) {
         <div class="alert alert-danger"><?php echo $ErrMsg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
       </div> <?php  } ?>
 
-      <?php if (isset($globalError)) {?>
+    <?php if (isset($globalError)) { ?>
       <div class="alert-container">
-        <div class="alert alert-danger"><?php echo $globalError;?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
-      </div> <?php  }?>
+        <div class="alert alert-danger"><?php echo $globalError; ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+      </div> <?php  } ?>
 
 
     <div class="sidebar">
@@ -262,11 +271,15 @@ if (isset($_POST['submit'])) {
               </div>
               <select name="area" required>
                 <option disabled selected>Select Your Area</option>
-                <option>Kalanki</option>
-                <option>Thankot</option>
-                <option>Satungal</option>
-                <option>Bafal</option>
-                <option>Sitapaila</option>
+                <?php
+
+                foreach ($areaList as $a) {
+                ?>
+                  <option value="<?php echo $a['name']; ?>"><?php echo $a['name']; ?></option>
+                <?php
+                }
+
+                ?>
               </select>
             </div>
             <div class="input-content">
@@ -292,10 +305,12 @@ if (isset($_POST['submit'])) {
               </div>
               <select name="occupation" required>
                 <option disabled selected>Select Your Profession</option>
-                <option>Plumber</option>
-                <option>Electrician</option>
-                <option>Carpenter</option>
-                <option>Painter</option>
+                <?php
+                foreach ($professionList as $p) { ?>
+                  <option value="<?php echo $p['name']; ?>"><?php echo $p['name']; ?></option>
+
+                <?php }
+                ?>
               </select>
             </div>
           </div>
