@@ -3,7 +3,6 @@
 
 if (isset($_GET['v'])) {
     $msg = $_GET['v'];
-    echo $msg;
 }
 
 
@@ -39,7 +38,7 @@ if (isset($_GET['v'])) {
                     <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="sevices.php">Plumber</a></li>
+                            <li><a href="services.php">Plumber</a></li>
                             <li><a href="">Electrician</a></li>
                             <li><a href="">Carpenter</a></li>
                             <li><a href="">Painter</a></li>
@@ -78,7 +77,7 @@ if (isset($_GET['v'])) {
                     <div class="buttons">
                         <a class="cta-explore" href="">Explore More</a>
 
-                        <a class="cta-find" href="">Find Now<i class='bx bxs-chevron-down'></i></a>
+                        <a class="cta-find" href="services.php">Find Now<i class='bx bxs-chevron-down'></i></a>
                     </div>
                 </div>
                 <div class="hero-image"><img src="images/banner-edited.png" alt=""></div>
