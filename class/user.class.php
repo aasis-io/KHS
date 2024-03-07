@@ -53,7 +53,7 @@ class User extends Common
     public function retrieve()
     {
         $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
-        $sql = "select * from users";
+        $sql = "select * from users where status = 1";
         $var = $conn->query($sql);
         if ($var->num_rows > 0) {
             $datalist = $var->fetch_all(MYSQLI_ASSOC);

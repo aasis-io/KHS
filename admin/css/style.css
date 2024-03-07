@@ -38,4 +38,33 @@ p {
 }
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.content_box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+ul{
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+ul > li > a{
+    padding: 2rem 3rem;
+    background: var(--dark-accent);
+    color: var(--white-clr);
+    border-radius: 8px;
+    transition: 0.5s;
+}
+
+ul > li > a:hover{
+    background: var(--accent-clr);
 }
