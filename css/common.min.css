@@ -43,7 +43,6 @@
   left: 50%;
   transform: translateX(-50%);
   top: 1rem;
-  /* width: 900px; */
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   z-index: 999;
