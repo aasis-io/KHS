@@ -19,7 +19,7 @@
 }
 
 .alert-success > button {
-  color: #01862e;
+  color: #009b34;
 }
 
 .alertClosed {
@@ -51,12 +51,12 @@
   transition: opacity 1s ease;
 }
 
-.homePage >a{
+.homePage > a {
   text-decoration: none;
 }
 
 .homeRedirect {
   position: absolute;
-  bottom: 10%;
   text-decoration: none;
+  bottom: 10%;
 }
