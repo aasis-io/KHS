@@ -25,6 +25,7 @@ if (isset($_POST['filterArea']) || isset($_POST['occupation'])) {
     $filteredUsers = NULL;
 }
 
+
 // Output the filtered user data as HTML
 foreach ($filteredUsers as $key => $u) {
     echo '<tr>';
@@ -35,4 +36,3 @@ foreach ($filteredUsers as $key => $u) {
     echo '<td>' . $u['phone'] . '</td>';
     echo '</tr>';
 }
-?>
