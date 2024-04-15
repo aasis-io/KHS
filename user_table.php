@@ -16,6 +16,8 @@
     </form>
 </div>
 
+
+
 <table id="userTable">
     <thead>
         <tr>
@@ -38,3 +40,4 @@
         <?php } ?>
     </tbody>
 </table>
+

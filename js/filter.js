@@ -22,3 +22,23 @@ $(document).ready(function() {
     // Initial filtering on page load
     filterUsers();
 });
+
+// $(document).ready(function () {
+//   $("#filterForm").on("submit", function (event) {
+//     event.preventDefault(); // Prevent default form submission
+
+//     var formData = $(this).serialize(); // Serialize form data
+
+//     $.ajax({
+//       url: "filter.php", // Specify the URL of your server-side script
+//       method: "POST",
+//       data: formData,
+//       success: function (response) {
+//         $("#userTable tbody").html(response); // Update the table body with the filtered data
+//       },
+//       error: function (xhr, status, error) {
+//         console.error(error);
+//       },
+//     });
+//   });
+// });
