@@ -20,11 +20,9 @@ if (isset($_POST['filterArea']) || isset($_POST['occupation'])) {
         return ($_POST['filterArea'] == '' || $user['area'] == $_POST['filterArea']) &&
             ($_POST['occupation'] == '' || $user['occupation'] == $_POST['occupation']);
     });
-   }
-// else {
-//     // If no filter options are selected, set $filteredUsers to NULL
-//     $filteredUsers = NULL;
-// }
+} else {
+    $filteredUsers = 1;
+}
 
 
 // Output the filtered user data as HTML
@@ -44,10 +42,11 @@ if (empty($filteredUsers)) {
     foreach ($filteredUsers as $key => $u) {
         echo "<tr>";
         echo "<td>" . ($key + 1) . "</td>";
-        echo "<td>" . $u['fullname'] . "</td>";
+        echo "<td class='img-name'><img src='images/" . $u['image'] . "' alt=''> " . $u['fullname'] . " </td>";
         echo "<td>" . $u['area'] . "</td>";
         echo "<td>" . $u['occupation'] . "</td>";
         echo "<td>" . $u['phone'] . "</td>";
+        echo "<td> 4.5 <i class='bx bxs-star'></i> • 5 reviews </td>";
         echo "</tr>";
     }
 }

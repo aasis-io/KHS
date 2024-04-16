@@ -3,35 +3,52 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, 
-				initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>The Product Review and Rating</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <link rel="stylesheet" href="style.css">
+    <title>Review</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Ashish Thapa</h1>
-        <div class="rating">
-            <span id="rating">0</span>/5
+    <div class="review-wrapper">
+        <div class="name-title">
+            <h1>Tell Us, how was your experience?
+                <span> ->John Doe</span>
+            </h1>
         </div>
-        <div class="stars" id="stars">
-            <span class="star" data-value="1"><i class='bx bxs-star'></i></span>
-            <span class="star" data-value="2"><i class='bx bxs-star'></i></span>
-            <span class="star" data-value="3"><i class='bx bxs-star'></i></span>
-            <span class="star" data-value="4"><i class='bx bxs-star'></i></span>
-            <span class="star" data-value="5"><i class='bx bxs-star'></i></span>
-        </div>
-        <p>Share your review:</p>
-        <textarea id="review" placeholder="Write your review here">
-		</textarea>
-        <button id="submit">Submit</button>
-        <div class="reviews" id="reviews">
+        <div class="review">
+            <form action="">
+                <div class="input-area">
+                    <label for="review-giver">Your Full Name</label>
+                    <input type="text" name="revire-giver">
+                </div>
+                <div class="input-area">
+                    <label for="review-giver">Your Email</label>
+                    <input type="text" name="revire-giver">
+                </div>
+                <div class="input-area">
+                    <label for="rating">How would you rate your experience?</label>
+                    <select name="rating" id="">
+                        <option value="" disabled selected>Rate your experience</option>
+                        <option value="5">Excellent</option>
+                        <option value="4">Very Good</option>
+                        <option value="3">Average</option>
+                        <option value="2">Poor</option>
+                        <option value="1">Terrible</option>
+                    </select>
+                </div>
+                <div class="input-area">
+                    <label for="rating">Write your review</label>
+                    <textarea name="review-text" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="submit">
+                    <button type="submit">
+                        Submit Review
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 
 </html>

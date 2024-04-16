@@ -26,6 +26,7 @@
             <th>Area</th>
             <th>Profession</th>
             <th>Phone Number</th>
+            <th>Reviews</th>
         </tr>
     </thead>
     <tbody>

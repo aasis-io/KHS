@@ -10,6 +10,7 @@
   --secondary-font: "Rubik", sans-serif;
   --background-clr: hsl(217, 100%, 97%);
   --piction-clr: #03aec6;
+  --orange-clr: rgb(255, 115, 0);
 }
 
 body {
@@ -382,6 +383,18 @@ a.cta-explore:hover {
   padding: 8px;
 }
 
+#userTable td.img-name {
+  display: flex;
+  gap: 6px;
+  place-items: center;
+}
+
+#userTable td.img-name > img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+
 #userTable tr:nth-child(even) {
   background-color: #eee;
 }
@@ -466,4 +479,8 @@ a.cta-explore:hover {
 
 .deleteFace > a:hover {
   background: rgb(229, 0, 0);
+}
+
+.bxs-star {
+  color: var(--orange-clr) !important;
 }
