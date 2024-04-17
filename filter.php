@@ -25,6 +25,7 @@ if (isset($_POST['filterArea']) || isset($_POST['occupation'])) {
 }
 
 
+
 // Output the filtered user data as HTML
 // foreach ($filteredUsers as $key => $u) {
 //     echo '<tr>';
@@ -42,7 +43,7 @@ if (empty($filteredUsers)) {
     foreach ($filteredUsers as $key => $u) {
         echo "<tr>";
         echo "<td>" . ($key + 1) . "</td>";
-        echo "<td class='img-name'><img src='images/" . $u['image'] . "' alt=''> " . $u['fullname'] . " </td>";
+        echo "<td class='img-name'><img src='images/" . $u['image'] . "' alt=''> <a href='view_user.php?id=" . $u['id'] . "'>" . $u['fullname'] . " </a> </td>";
         echo "<td>" . $u['area'] . "</td>";
         echo "<td>" . $u['occupation'] . "</td>";
         echo "<td>" . $u['phone'] . "</td>";
