@@ -1,11 +1,26 @@
 <?php
 
 include('class/user.class.php');
+include('class/rating.class.php');
+
 
 
 $user = new User();
 $user->set('id', $_GET['id']);
 $retrieveUser = $user->getById();
+
+
+$rating = new Rating();
+$rating->set('u_id', $_GET['id']);
+
+$ratingList = $rating->getById();
+
+// Assuming retrieve() returns an array of reviews
+foreach ($ratingList as $review) {
+    echo $review->review_giver . "<br>";
+    echo $review->email . "<br>";
+}
+
 
 
 ?>
@@ -30,69 +45,59 @@ $retrieveUser = $user->getById();
     <div id="wrapper">
         <a href="index.php" class="accHome"><i class="fa-solid fa-arrow-left"></i> Go to home page</a>
         <div class="container">
-            <div class="userDetail">
-                <div class="profileImg">
-                    <img src="images/<?php echo $retrieveUser->image; ?>" alt="">
-                </div>
-                <div class="allDetail">
-                    <div class="detail">
-                        <p>Full Name: <span><?php echo $retrieveUser->fullname ?></span></p>
+            <div class="userDetail viewBySeeker">
+                <div class="userInfo">
+                    <div class="profileImg">
+                        <img src="images/<?php echo $retrieveUser->image; ?>" alt="">
                     </div>
-                    <div class="detail">
-                        <p>Email: <span><?php echo $retrieveUser->email ?></span></p>
-                    </div>
-                    <div class="detail">
-                        <p>Age: <span><?php echo $retrieveUser->age ?></span></p>
-                    </div>
-                    <div class="detail">
-                        <p>Phone Number: <span><?php echo $retrieveUser->phone ?></span></p>
-                    </div>
-                    <div class="detail">
-                        <p>Gender: <span><?php echo $retrieveUser->gender ?></span></p>
-                    </div>
-                    <div class="detail">
-                        <p>Occupation: <span><?php echo $retrieveUser->occupation ?></span></p>
-                    </div>
-                    <div class="detail">
-                        <p>Area: <span><?php echo $retrieveUser->area ?></span></p>
-                    </div>
-                    <div class="detail">
-                        <p>Address: <span><?php echo $retrieveUser->address ?></span></p>
-                    </div>
-
-                    <div class="detail linkButton">
-                        <button style="background: red;" id="deletePopUp"><i class="fa-solid fa-trash"></i> &nbsp;Delete Account</button>
-                        <a href="editUser.php" class="editButton"><i class="fa-solid fa-pen-to-square"></i> &nbsp;Edit Details</a>
-                    </div>
-                    <div class="deletePop">
-                        <div class="deleteFace">
-                            <h1>Confirm Deletion</h1>
-                            <p>Are you sure you want to delete your account from database? This action cannot be undone.</p>
-                            <button class="cancelPop">Cancel</button>
-                            <a class="deleteAccount" href="deleteAccount.php?id=<?php echo $_GET['id'] ?>">Delete</a>
+                    <div class="allDetail">
+                        <div class="detail">
+                            <p>Full Name: <span><?php echo $retrieveUser->fullname ?></span></p>
                         </div>
+                        <div class="detail">
+                            <p>Email: <span><?php echo $retrieveUser->email ?></span></p>
+                        </div>
+                        <div class="detail">
+                            <p>Age: <span><?php echo $retrieveUser->age ?></span></p>
+                        </div>
+                        <div class="detail">
+                            <p>Phone Number: <span><?php echo $retrieveUser->phone ?></span></p>
+                        </div>
+                        <div class="detail">
+                            <p>Gender: <span><?php echo $retrieveUser->gender ?></span></p>
+                        </div>
+                        <div class="detail">
+                            <p>Occupation: <span><?php echo $retrieveUser->occupation ?></span></p>
+                        </div>
+                        <div class="detail">
+                            <p>Area: <span><?php echo $retrieveUser->area ?></span></p>
+                        </div>
+                        <div class="detail">
+                            <p>Address: <span><?php echo $retrieveUser->address ?></span></p>
+                        </div>
+
+                        <div class="detail linkButton">
+                            <button id="callnow"><i class="fa-solid fa-phone"></i> &nbsp;<a href="tel:+977 9876909767">Call Now</a></button>
+                        </div>
+
                     </div>
+                </div>
+
+                <div class="userReviews">
+                    <ul class="reviewList">
+                        <li>
+                            
+                        </li>
+                    </ul>
                 </div>
             </div>
+
         </div>
     </div>
 
     <script src="js/script.js"></script>
     <script src="https://kit.fontawesome.com/1f2d50e34f.js" crossorigin="anonymous"></script>
-    <script>
-        document.getElementById("deletePopUp").addEventListener("click", function() {
-            document.getElementsByClassName("deletePop")[0].style.display = "block";
-            document.getElementsByClassName("deletePop")[0].style.opacity = 1;
 
-        });
-
-        document
-            .getElementsByClassName("cancelPop")[0]
-            .addEventListener("click", function() {
-                document.getElementsByClassName("deletePop")[0].style.display = "none";
-                document.getElementsByClassName("deletePop")[0].style.opacity = 0;
-            });
-    </script>
 </body>
 
 </html>

@@ -47,7 +47,7 @@ if (empty($filteredUsers)) {
         echo "<td>" . $u['area'] . "</td>";
         echo "<td>" . $u['occupation'] . "</td>";
         echo "<td>" . $u['phone'] . "</td>";
-        echo "<td> 4.5 <i class='bx bxs-star'></i> • 5 reviews </td>";
+        echo "<td> 4.5 <i class='bx bxs-star'></i> •   <a href='view_user.php?id=" . $u['id'] . "'> 5 Reviews </a></td>";
         echo "</tr>";
     }
 }
