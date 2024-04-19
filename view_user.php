@@ -15,11 +15,12 @@ $rating->set('u_id', $_GET['id']);
 
 $ratingList = $rating->getById();
 
-// Assuming retrieve() returns an array of reviews
-foreach ($ratingList as $review) {
-    echo $review->review_giver . "<br>";
-    echo $review->email . "<br>";
-}
+
+
+$averageRating = $rating->getAverageRating();
+
+$totalReviews = $rating->getTotalReviews();
+
 
 
 
@@ -84,10 +85,24 @@ foreach ($ratingList as $review) {
                 </div>
 
                 <div class="userReviews">
+                    <span>Rated <?php echo round($averageRating, 1) ?> <i class='bx bxs-star'></i> : Based on <?php echo $totalReviews; ?> Reviews</span>
                     <ul class="reviewList">
-                        <li>
-                            
-                        </li>
+                        <?php foreach ($ratingList as $review) {
+                        ?>
+                            <li>
+                                <span class="reviewer"><?php echo $review->review_giver; ?></span>
+                                <div class="rating">
+                                    <?php for ($i = 0; $i < $review->rating; $i++) { ?>
+                                        <i class="fa-solid fa-star"></i>
+                                    <?php } ?>
+                                </div>
+                                <p><?php echo $review->review; ?></p>
+                            </li>
+                        <?php  }  ?>
+                    </ul>
+                    <ul class="buttonList">
+                        <li><a href="" class="stylishButton">Read all reviews</a></li>
+                        <li><a href="" class="stylishButton">Write a review</a></li>
                     </ul>
                 </div>
             </div>

@@ -338,6 +338,30 @@ a.cta-explore:hover {
   text-decoration: none;
 }
 
+.stylishButton {
+  background-image: linear-gradient(
+    to right,
+    #1a2980 0%,
+    #26d0ce 51%,
+    #1a2980 100%
+  );
+  padding: 15px 45px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.stylishButton:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
 #callnow > a {
   color: var(--white-clr);
 }
@@ -382,6 +406,8 @@ a.cta-explore:hover {
   box-shadow: none;
   max-width: 999px;
   justify-content: center;
+  place-items: normal;
+  gap: 1rem;
 }
 
 .viewBySeeker > .userInfo {
@@ -394,6 +420,61 @@ a.cta-explore:hover {
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.userReviews > span {
+  display: block;
+  padding: 1rem;
+  background: var(--white-clr);
+  border-radius: 8px 8px 0 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.userReviews .reviewList {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.userReviews .reviewList > li {
+  padding: 1rem;
+  background: var(--white-clr);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+.userReviews .reviewList > li:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.userReviews .reviewList > li > .rating > i {
+  color: var(--orange-clr);
+}
+
+.userReviews .reviewList > li > span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.userReviews .buttonList{
+  display: flex;
+    /* justify-content: space-around; */
+    padding: 0;
+    gap: 1rem;
+}
+
+.userReviews .buttonList > li:last-child > a{
+  background-image: none;
+  box-shadow: none;
+  color: var(--accent-clr);
+  text-decoration: underline;
+  transition: .3s ease;
+}
+.userReviews .buttonList > li:last-child > a:hover{
+  font-size: 18px;
 }
 /*======
  Services Css 
