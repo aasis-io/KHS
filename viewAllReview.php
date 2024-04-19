@@ -13,7 +13,7 @@ $retrieveUser = $user->getById();
 $rating = new Rating();
 $rating->set('u_id', $_GET['id']);
 
-$ratingList = $rating->getById();
+$ratingList = $rating->getAllReviewsById();
 
 
 
@@ -47,44 +47,9 @@ $totalReviews = $rating->getTotalReviews();
         <a href="#" class="accHome" onclick="history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Go Back</a>
         <div class="container">
             <div class="userDetail viewBySeeker">
-                <div class="userInfo">
-                    <div class="profileImg">
-                        <img src="images/<?php echo $retrieveUser->image; ?>" alt="">
-                    </div>
-                    <div class="allDetail">
-                        <div class="detail">
-                            <p>Full Name: <span><?php echo $retrieveUser->fullname ?></span></p>
-                        </div>
-                        <div class="detail">
-                            <p>Email: <span><?php echo $retrieveUser->email ?></span></p>
-                        </div>
-                        <div class="detail">
-                            <p>Age: <span><?php echo $retrieveUser->age ?></span></p>
-                        </div>
-                        <div class="detail">
-                            <p>Phone Number: <span><?php echo $retrieveUser->phone ?></span></p>
-                        </div>
-                        <div class="detail">
-                            <p>Gender: <span><?php echo $retrieveUser->gender ?></span></p>
-                        </div>
-                        <div class="detail">
-                            <p>Occupation: <span><?php echo $retrieveUser->occupation ?></span></p>
-                        </div>
-                        <div class="detail">
-                            <p>Area: <span><?php echo $retrieveUser->area ?></span></p>
-                        </div>
-                        <div class="detail">
-                            <p>Address: <span><?php echo $retrieveUser->address ?></span></p>
-                        </div>
-
-                        <div class="detail linkButton">
-                            <button id="callnow"><i class="fa-solid fa-phone"></i> &nbsp;<a href="tel:+977 9876909767">Call Now</a></button>
-                        </div>
-
-                    </div>
-                </div>
 
                 <div class="userReviews">
+                    <h2><?php echo $retrieveUser->fullname; ?></h2>
                     <span>Rated <?php echo round($averageRating, 1) ?> <i class='bx bxs-star'></i> : Based on <?php echo $totalReviews; ?> Reviews</span>
                     <ul class="reviewList">
                         <?php foreach ($ratingList as $review) {
@@ -101,7 +66,6 @@ $totalReviews = $rating->getTotalReviews();
                         <?php  }  ?>
                     </ul>
                     <ul class="buttonList">
-                        <li><a href="viewAllReview.php?id=<?php echo $_GET['id']; ?>" class="stylishButton">Read all reviews</a></li>
                         <li><a href="writeReview.php" class="stylishButton">Write a review</a></li>
                     </ul>
                 </div>

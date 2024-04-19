@@ -83,6 +83,24 @@ class Rating extends Common
         }
     }
 
+    public function getAllReviewsById()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "SELECT * FROM rating WHERE u_id='$this->u_id'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Fetch all rows into an array of objects
+            $data = [];
+            while ($row = $result->fetch_object()) {
+                $data[] = $row;
+            }
+            return $data;
+        } else {
+            return [];
+        }
+    }
+
     public function getAverageRating()
     {
         $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
@@ -108,6 +126,38 @@ class Rating extends Common
             return $data['total_reviews'];
         } else {
             return 0; // Default value if no reviews found
+        }
+    }
+
+
+
+
+
+    function countReviewsForUser($userId)
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "SELECT COUNT(*) AS review_count FROM rating WHERE u_id='$userId'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            return $data['review_count'];
+        } else {
+            return 0; // Default value if no reviews found
+        }
+    }
+
+    public function getAverageRatingOfUser($userId)
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "SELECT AVG(rating) AS average_rating FROM rating WHERE u_id='$userId'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            return $data['average_rating'];
+        } else {
+            return 0; // Default value if no ratings found
         }
     }
 }
