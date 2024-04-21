@@ -34,7 +34,7 @@ if (isset($_GET['v'])) {
             <a class="logo" href="index.php"><img src="images/logo.png" alt=""></a>
             <nav>
                 <ul class="nav-list">
-                    <li><a href="">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
 
                         <ul class="dropdown-menu">
@@ -60,27 +60,22 @@ if (isset($_GET['v'])) {
                     <?php } else { ?>
 
 
-                        <li class="loginBtn"><a href="question.php">Sign In</a></li>
+                        <li class="loginBtn"><a href="login.php">Sign In</a></li>
 
                     <?php } ?>
 
                 </ul>
             </nav>
         </div>
-        <div class="container">
-            <div class="hero-section">
-                <div class="hero-content">
-                    <h1 class="heading">Enhancing Capital’s <br> Homes through easy connections and skilled, efficient
-                        services</h1>
-                    <p class="hero-description">Connect with Confidence: Uncover Reliable <br>
-                        Service Providers in Your Local Area for Seamless Solutions <br> and Trusted Expertise.</p>
-                    <div class="buttons">
-                        <a class="cta-explore" href="">Explore More</a>
+        <div class="container questionPage">
 
-                        <a class="cta-find" href="services.php">Find Now<i class='bx bxs-chevron-down'></i></a>
-                    </div>
+            <div class="questionWrap">
+                <h2>Are you a service seeker or a provider?</h2>
+
+                <div class="questionButtons">
+                    <a href="" class="btn-grad">Seeker</a>
+                    <a href="login.php" class="btn-grad btnWhite">Provider</a>
                 </div>
-                <div class="hero-image"><img src="images/banner-edited.png" alt=""></div>
             </div>
 
         </div>

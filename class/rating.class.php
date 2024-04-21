@@ -9,18 +9,21 @@ class Rating extends Common
     public function save()
     {
         $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
-        $sql = "insert into rating(review_giver, email, rating, review, u_id) values('$this->review_giver', '$this->email', '$this->rating', '$this->review', '$this->u_id')";
+        $sql = "INSERT INTO rating(review_giver, email, rating, review, u_id) VALUES ('$this->review_giver', '$this->email', '$this->rating', '$this->review', '$this->u_id')";
 
         $conn->query($sql);
 
         if ($conn->affected_rows == 1 && $conn->insert_id > 0) {
-            // return $conn->insert_id;
-            header('Location:view_user.php?v="Review Added Successfully"');
+            $user_id = $_GET['id'];// Fetch user ID from somewhere;
+                $message = urlencode("Review Added Successfully for user $user_id");
+            header("Location: view_user.php?id=$user_id&v=$message");
         } else {
-            header('Location:review.php?v="Error Occured!"');
+            $message = urlencode("Error Occurred for user $this->u_id");
+            header("Location: review.php?v=$message");
             return false;
         }
     }
+
 
 
     public function retrieve()

@@ -21,7 +21,7 @@ $averageRating = $rating->getAverageRating();
 
 $totalReviews = $rating->getTotalReviews();
 
-
+$user_id = $_GET['id']; 
 
 
 ?>

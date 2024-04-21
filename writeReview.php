@@ -7,6 +7,8 @@ if (isset($_GET['v'])) {
     $msg = $_GET['v'];
 }
 
+
+
 include('class/user.class.php');
 include('class/rating.class.php');
 
@@ -17,6 +19,8 @@ $user->set('id', $_GET['id']);
 $retrieveUser = $user->getById();
 
 $rating = new Rating();
+$rating->set('u_id', $_GET['id']);
+
 
 
 
@@ -45,7 +49,7 @@ if (isset($_POST['submit'])) {
 
     if (empty($emptyName) && empty($emptyEmail) && empty($emptyRating) && empty($emptyReview)) {
 
-        $rating->set('name', $_POST['name']);
+        $rating->set('review_giver', $_POST['review_giver']);
         $rating->set('email', $_POST['email']);
         $rating->set('rating', $_POST['rating']);
         $rating->set('review', $_POST['review']);
@@ -66,8 +70,11 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/home.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/common.min.css">
+
+
     <title>Review</title>
 </head>
 
@@ -94,17 +101,31 @@ if (isset($_POST['submit'])) {
             </h1>
         </div>
         <div class="review">
-            <form action="">
+            <form action="" method="post" novalidate>
                 <div class="input-area">
                     <label for="review_giver">Your Full Name</label>
-                    <input type="text" name="review_giver" placeholder="your name here">
+                    <?php if (isset($emptyName)) { ?>
+
+                        <small class="error-message"> <?php echo $emptyName; ?> </small>
+
+                    <?php } ?>
+                    <input type="text" name="review_giver" placeholder="Your name here">
                 </div>
                 <div class="input-area">
                     <label for="email">Your Email</label>
-                    <input type="text" name="email" placeholder="your email here">
+                    <?php if (isset($invalidEmail)) { ?>
+                        <small class="error-message"> <?php echo $invalidEmail; ?></small>
+                    <?php } ?>
+                    <?php if (isset($emptyEmail)) { ?>
+                        <small class="error-message"> <?php echo $emptyEmail; ?></small>
+                    <?php } ?>
+                    <input type="text" name="email" placeholder="Your email here">
                 </div>
                 <div class="input-area">
                     <label for="rating">How would you rate your experience?</label>
+                    <?php if (isset($emptyRating)) { ?>
+                        <small class="error-message"> <?php echo $emptyRating; ?></small>
+                    <?php } ?>
                     <select name="rating" id="">
                         <option disabled selected>Rate your experience</option>
                         <option value="5">Excellent</option>
@@ -116,16 +137,21 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="input-area">
                     <label for="review">Write your review</label>
-                    <textarea name="review" id="" cols="30" rows="10" placeholder="share your review"></textarea>
+                    <?php if (isset($emptyReview)) { ?>
+                        <small class="error-message"> <?php echo $emptyReview; ?></small>
+                    <?php } ?>
+                    <textarea name="review" id="" cols="30" rows="10" placeholder="Share your review"></textarea>
                 </div>
                 <div class="submit">
-                    <button type="submit">
+                    <button type="submit" name="submit">
                         Submit Review
                     </button>
                 </div>
             </form>
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/1f2d50e34f.js" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

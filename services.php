@@ -34,11 +34,11 @@ if (isset($_GET['v'])) {
             <a class="logo" href="index.php"><img src="images/logo.png" alt=""></a>
             <nav>
                 <ul class="nav-list">
-                    <li><a href="">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="sevices.php">Plumber</a></li>
+                            <li><a href="services.php">Plumber</a></li>
                             <li><a href="">Electrician</a></li>
                             <li><a href="">Carpenter</a></li>
                             <li><a href="">Painter</a></li>

@@ -361,7 +361,6 @@ a.cta-explore:hover {
   text-decoration: none;
 }
 
-
 #callnow > a {
   color: var(--white-clr);
 }
@@ -395,6 +394,14 @@ a.cta-explore:hover {
 
 .linkButton > button {
   color: var(--white-clr);
+}
+
+/*==========*/
+
+.review small {
+  position: absolute;
+  right: 0;
+  color: red !important;
 }
 
 /*==========*/
@@ -459,21 +466,21 @@ a.cta-explore:hover {
   margin-bottom: 0.4rem;
 }
 
-.userReviews .buttonList{
+.userReviews .buttonList {
   display: flex;
-    /* justify-content: space-around; */
-    padding: 0;
-    gap: 1rem;
+  /* justify-content: space-around; */
+  padding: 0;
+  gap: 1rem;
 }
 
-.userReviews .buttonList > li:last-child > a{
+.userReviews .buttonList > li:last-child > a {
   background-image: none;
   box-shadow: none;
   color: var(--accent-clr);
   text-decoration: underline;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
-.userReviews .buttonList > li:last-child > a:hover{
+.userReviews .buttonList > li:last-child > a:hover {
   font-size: 18px;
 }
 /*======
@@ -552,6 +559,12 @@ a.cta-explore:hover {
   padding: 2rem;
 }
 
+.fa-arrow-left {
+  background: var(--accent-clr);
+  color: var(--white-clr);
+  border-radius: 50%;
+  padding: 10px;
+}
 .deletePop {
   position: absolute;
   top: 0;
@@ -679,4 +692,41 @@ Review
 
 .review input {
   height: 32px;
+}
+/*==========
+Question Page
+==========*/
+
+.questionPage {
+  display: flex;
+  justify-content: center;
+}
+.questionButtons {
+  display: flex;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.questionPage .questionButtons > .btn-grad {
+  background: var(--accent-clr);
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+}
+
+.questionPage .questionButtons > .btn-grad:hover {
+  background: var(--piction-clr);
+}
+
+.questionPage .questionButtons > .btn-grad.btnWhite {
+  background: var(--dark-accent);
+}
+
+.questionPage .questionButtons > .btn-grad.btnWhite:hover {
+  background: var(--piction-clr);
 }
