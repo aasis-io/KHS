@@ -102,7 +102,7 @@ $totalReviews = $rating->getTotalReviews();
                     </ul>
                     <ul class="buttonList">
                         <li><a href="viewAllReview.php?id=<?php echo $_GET['id']; ?>" class="stylishButton">Read all reviews</a></li>
-                        <li><a href="writeReview.php" class="stylishButton">Write a review</a></li>
+                        <li><a href="writeReview.php?id=<?php echo $_GET['id']; ?>" class="stylishButton">Write a review</a></li>
                     </ul>
                 </div>
             </div>
