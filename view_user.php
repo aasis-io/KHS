@@ -3,7 +3,11 @@
 include('class/user.class.php');
 include('class/rating.class.php');
 
+@session_start();
 
+if (isset($_GET['v'])) {
+    $msg = $_GET['v'];
+}
 
 $user = new User();
 $user->set('id', $_GET['id']);
@@ -21,7 +25,7 @@ $averageRating = $rating->getAverageRating();
 
 $totalReviews = $rating->getTotalReviews();
 
-$user_id = $_GET['id']; 
+$user_id = $_GET['id'];
 
 
 ?>
@@ -42,6 +46,11 @@ $user_id = $_GET['id'];
 </head>
 
 <body>
+
+    <?php if (isset($msg)) { ?>
+        <div class="alert-container" id="alertContainer">
+            <div class="alert alert-success"><?php echo $msg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+        </div> <?php  } ?>
 
     <div id="wrapper">
         <a href="#" class="accHome" onclick="history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Go Back</a>

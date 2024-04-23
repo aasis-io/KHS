@@ -73,7 +73,7 @@ if (isset($_GET['v'])) {
                 <h2>Are you a service seeker or a provider?</h2>
 
                 <div class="questionButtons">
-                    <a href="" class="btn-grad">Seeker</a>
+                    <a href="seekerLogin.php" class="btn-grad">Seeker</a>
                     <a href="login.php" class="btn-grad btnWhite">Provider</a>
                 </div>
             </div>

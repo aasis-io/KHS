@@ -9,6 +9,8 @@ if (isset($_GET['v'])) {
 
 
 
+
+
 include('class/user.class.php');
 include('class/rating.class.php');
 
@@ -109,7 +111,9 @@ if (isset($_POST['submit'])) {
                         <small class="error-message"> <?php echo $emptyName; ?> </small>
 
                     <?php } ?>
-                    <input type="text" name="review_giver" placeholder="Your name here">
+                    <input type="text" name="review_giver" placeholder="Your name here" value="<?php if ($_SESSION['role'] == "seeker") {
+                                                                                                    echo $_SESSION['fullname'];
+                                                                                                } ?>">
                 </div>
                 <div class="input-area">
                     <label for="email">Your Email</label>
@@ -119,7 +123,9 @@ if (isset($_POST['submit'])) {
                     <?php if (isset($emptyEmail)) { ?>
                         <small class="error-message"> <?php echo $emptyEmail; ?></small>
                     <?php } ?>
-                    <input type="text" name="email" placeholder="Your email here">
+                    <input type="text" name="email" placeholder="Your email here" value="<?php if ($_SESSION['role'] == "seeker") {
+                                                                                                    echo $_SESSION['email'];
+                                                                                                } ?>">
                 </div>
                 <div class="input-area">
                     <label for="rating">How would you rate your experience?</label>

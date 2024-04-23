@@ -78,13 +78,31 @@
 }
 
 .homeRedirect {
-  position: absolute;
+  display: flex;
   text-decoration: none;
-  bottom: 10%;
+  margin-top: 2rem;
 }
+
 label {
   font-size: 16px;
   padding: 5px 0;
   color: var(--text-clr);
   font-family: "Ubuntu", sans-serif;
+}
+
+.loginError {
+  right: 0;
+  top: 8px;
+}
+
+.seekerProfile {
+  background: var(--accent-clr) !important;
+  color: var(--white-clr);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  font-size: 28px !important;
+}
+.seekerProfile:hover {
+  color: var(--piction-clr) !important;
 }

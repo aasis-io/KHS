@@ -21,7 +21,7 @@
 <table id="userTable">
     <thead>
         <tr>
-            <th>Id</th>
+            <th>S. No.</th>
             <th>Name</th>
             <th>Area</th>
             <th>Profession</th>

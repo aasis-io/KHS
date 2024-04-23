@@ -321,13 +321,15 @@ small {
 
 /*Login Page CSS*/
 
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
 .form-container {
   background-color: var(--White);
-  position: absolute;
-  top: 50%;
-  left: 50%;
   padding: 1rem;
-  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   border-radius: 10px;

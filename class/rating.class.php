@@ -14,11 +14,11 @@ class Rating extends Common
         $conn->query($sql);
 
         if ($conn->affected_rows == 1 && $conn->insert_id > 0) {
-            $user_id = $_GET['id'];// Fetch user ID from somewhere;
-                $message = urlencode("Review Added Successfully for user $user_id");
+            $user_id = $_GET['id'];
+                $message = urlencode("Review Added Successfully!");
             header("Location: view_user.php?id=$user_id&v=$message");
         } else {
-            $message = urlencode("Error Occurred for user $this->u_id");
+            $message = urlencode("Error Occurred!");
             header("Location: review.php?v=$message");
             return false;
         }

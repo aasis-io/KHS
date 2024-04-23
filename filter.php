@@ -45,7 +45,7 @@ if (isset($_POST['filterArea']) || isset($_POST['occupation'])) {
 // }
 
 if (empty($filteredUsers)) {
-    echo "<tr><td colspan='5' style='text-align: center;'>No users found.</td></tr>"; // Display "No users found" message
+    echo "<tr><td colspan='6' style='text-align: center;'>No users found.</td></tr>"; // Display "No users found" message
 } else {
     foreach ($filteredUsers as $key => $u) {
         // Assuming you have a function or method to count the reviews for a user

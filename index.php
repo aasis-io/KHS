@@ -47,8 +47,8 @@ if (isset($_GET['v'])) {
                     </li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-                    <?php if (isset($_SESSION['email'])) {
-                    ?>
+                    <?php if (isset($_SESSION['email']) && $_SESSION['role'] == "user") { ?>
+
                         <li class="profile-toggle">
                             <a href="#" class="profile-drop"><img src="images/<?php echo $_SESSION['image']; ?>" alt=""></a>
                             <ul class="profile-menu">
@@ -57,7 +57,30 @@ if (isset($_GET['v'])) {
                             </ul>
                         </li>
 
-                    <?php } else { ?>
+                    <?php } elseif (isset($_SESSION['email']) && $_SESSION['role'] == "seeker") { ?>
+
+                        <li class="profile-toggle">
+                            <a href="#" class="profile-drop seekerProfile">
+                                <?php
+
+
+                                $myString = $_SESSION['fullname'];
+
+                                /* get First Character of string */
+                                $char = substr($myString, 0, 1);
+
+                                /* Echo resulted string */
+                                echo $char;
+
+                                ?>
+                            </a>
+                            <ul class="profile-menu">
+                                <li><a href="seekerAccount.php?id=<?php echo $_SESSION['id'] ?>">Account</a></li>
+                                <li><a href="logout.php">Logout</a></li>
+                            </ul>
+                        </li>
+
+                    <?php  } else { ?>
 
 
                         <li class="loginBtn"><a href="question.php">Sign In</a></li>
@@ -117,6 +140,8 @@ if (isset($_GET['v'])) {
             });
         });
     </script>
+
+
 </body>
 
 </html>

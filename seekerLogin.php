@@ -5,25 +5,25 @@ if (array_key_exists('email', $_SESSION) && array_key_exists('email', $_COOKIE))
 }
 
 
-include('class/user.class.php');
+include('class/seeker.class.php');
 
-$userObject = new User();
+$seekerObject = new Seeker();
 $error = [];
 
 if (isset($_POST['submit'])) {
     if (isset($_POST['email']) && !empty($_POST['email'])) {
-        $userObject->email = $_POST['email'];
+        $seekerObject->email = $_POST['email'];
     } else {
         $error['email'] = "This field is required!";
     }
     if (isset($_POST['password']) && !empty($_POST['password'])) {
-        $userObject->password = $_POST['password'];
+        $seekerObject->password = $_POST['password'];
     } else {
         $error['password'] = "This field is required!";
     }
 
     if (count($error) < 1) {
-        $status =  $userObject->login();
+        $status =  $seekerObject->login();
     }
 }
 
