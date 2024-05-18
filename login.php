@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
         $error['password'] = "This field is required!";
     }
 
+
     if (count($error) < 1) {
         $status =  $userObject->login();
     }
@@ -45,6 +46,11 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div id="wrapper">
+        <?php
+        if (isset($status)) {
+            echo "<small class='statusError'>$status</small>";
+        }
+        ?>
         <div class="form-container">
             <h2>Login</h2>
             <form method="post" novalidate>
@@ -67,14 +73,9 @@ if (isset($_POST['submit'])) {
                     <?php if (isset($error['password'])) { ?>
                         <small class="loginError"> <?php echo $error['password']; ?> </small>
                     <?php } ?>
-                    <?php
-                    if (isset($status)) {
-                        echo "<small>$status</small>";
-                    }
-                    ?>
+
                 </div>
                 <button type="submit" name="submit">Sign In</button>
-                <!-- <input type="submit" name="submit" value="Log In"> -->
 
             </form>
             <p>Not Registered? <a href="register.php">Sign Up Here</a></p>

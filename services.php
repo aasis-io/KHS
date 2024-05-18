@@ -34,7 +34,7 @@ if (isset($_GET['v'])) {
             <a class="logo" href="index.php"><img src="images/logo.png" alt=""></a>
             <nav>
                 <ul class="nav-list">
-                    <li><a href="">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
 
                         <ul class="dropdown-menu">
@@ -88,7 +88,7 @@ if (isset($_GET['v'])) {
                     <?php } ?>
 
                 </ul>
-            </nav> 
+            </nav>
         </div>
         <div class="container">
             <?php include('filter.php'); ?>
@@ -96,7 +96,8 @@ if (isset($_GET['v'])) {
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="js/jquery.js"></script>
     <script src="js/filter.js"></script>
     <script>
         var alertContainer = document.getElementById("alertContainer");

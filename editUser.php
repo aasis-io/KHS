@@ -23,7 +23,7 @@ if (isset($_GET['v'])) {
 
 $pattern = '/^(98[4-9]|97[7-9]|96[6-9])\d{7}$/';
 
-$passPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/';
+// $passPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/';
 
 
 if (isset($_POST['submit'])) {
@@ -91,14 +91,8 @@ if (isset($_POST['submit'])) {
     }
 
 
-    if (empty($_POST['password'])) {
-        $emptyPassword = "Password Field Empty!";
-    } elseif (strlen($_POST['password']) < 8 || !preg_match($passPattern, $_POST['password'])) {
-        $invalidPasswordLength = "Invalid Password!";
-    }
 
-
-    if (empty($emptyName) && empty($emptyAge) && empty($emptyEmail) && empty($emptyPhone) && empty($emptyGender) && empty($emptyOccupation) && empty($emptyArea) && empty($emptyAddress) && empty($emptyPassword) && empty($invalidEmail) && empty($invalidPhone) && empty($imageError) && empty($invalidPasswordLength) && empty($invalidPassword)) {
+    if (empty($emptyName) && empty($emptyAge) && empty($emptyEmail) && empty($emptyPhone) && empty($emptyGender) && empty($emptyOccupation) && empty($emptyArea) && empty($emptyAddress) && empty($invalidEmail) && empty($invalidPhone) && empty($imageError)) {
 
         $user->set('fullname', $_POST['fullname']);
         $user->set('email', $_POST['email']);
@@ -108,9 +102,18 @@ if (isset($_POST['submit'])) {
         $user->set('occupation', $_POST['occupation']);
         $user->set('area', $_POST['area']);
         $user->set('address', $_POST['address']);
-        $user->set('password', $_POST['password']);
 
-        $user->save();
+
+        $result = $user->edit();
+        if ($result) {
+            $ErrMs = "";
+            $user->set('id', $_GET['id']);
+            $retrieveUser = $user->getById();
+            header("location: account.php?v='User updated Successfully with id . $result' & id=$user->id");
+            // $msg = "User updated Successfully with id " . $result;
+        } else {
+            $msg = "";
+        }
     } else {
         $globalError = "Something went wrong! Please Check All the Fields!";
     }
@@ -173,13 +176,13 @@ if (isset($_POST['submit'])) {
                         <div class="info">Image</div>
                     </div>
                 </li>
-                <li class="step4 all-steps">
+                <!-- <li class="step4 all-steps">
                     <div class="list-num">4</div>
                     <div class="side-content">
                         <p>Step 4</p>
                         <div class="info">Password</div>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="main-content">
@@ -278,7 +281,9 @@ if (isset($_POST['submit'])) {
 
                                 foreach ($areaList as $a) {
                                 ?>
-                                    <option value="<?php echo $a['name']; ?>"  <?php if($retrieveUser->area==$a['name']){echo "selected";} ?>><?php echo $a['name']; ?></option>
+                                    <option value="<?php echo $a['name']; ?>" <?php if ($retrieveUser->area == $a['name']) {
+                                                                                    echo "selected";
+                                                                                } ?>><?php echo $a['name']; ?></option>
                                 <?php
                                 }
 
@@ -294,8 +299,13 @@ if (isset($_POST['submit'])) {
                             </div>
                             <select name="gender" required>
                                 <option disabled selected>Select Your Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
+
+                                <option <?php if ($retrieveUser->gender == "Male") {
+                                            echo "selected";
+                                        } ?>>Male</option>
+                                <option <?php if ($retrieveUser->gender == "Female") {
+                                            echo "selected";
+                                        } ?>>Female</option>
 
                             </select>
                         </div>
@@ -310,7 +320,9 @@ if (isset($_POST['submit'])) {
                                 <option disabled selected>Select Your Profession</option>
                                 <?php
                                 foreach ($professionList as $p) { ?>
-                                    <option value="<?php echo $p['name']; ?>"><?php echo $p['name']; ?></option>
+                                    <option value="<?php echo $p['name']; ?>" <?php if ($retrieveUser->profession == $a['profession']) {
+                                                                                    echo "selected";
+                                                                                } ?>><?php echo $p['name']; ?></option>
 
                                 <?php }
                                 ?>
@@ -345,66 +357,17 @@ if (isset($_POST['submit'])) {
 
                             <input type="file" name="image" class="inputs" id="image" required />
                         </div>
-                        <div id="imageContainer"></div>
+
+                        <div id="imageContainer">
+                            <img src='images/<?php echo $retrieveUser->image; ?>' alt="">
+                        </div>
                     </div>
                     <div class="btn-container">
-                        <button class="next-step btns2 stagebtn3b" id="towbtn">Next Step</button>
+                        <button class="next-step btns2" type="submit" name="submit">Submit</button>
                         <button class="go-back btns2 stagebtn3a" id="goBack">Go Back</button>
                     </div>
                 </div>
-                <div class="step-four-container hidden">
-                    <!-- Step 1 start -->
-                    <div class="header-sec">
-                        <h1 class="title">Create Password</h1>
-                        <p class="info-p">
-                            Create a password with given instructions
-                        </p>
-                    </div>
-                    <div class="input-container">
 
-                        <div class="input-content">
-                            <div class="label-container">
-                                <label for="password">Password</label>
-                                <?php if (isset($emptyPassword)) { ?>
-                                    <small class="error-message"> <?php echo $emptyPassword; ?></small>
-                                <?php } ?>
-                                <?php if (isset($invalidPasswordLength)) { ?>
-                                    <small class="error-message"> <?php echo $invalidPasswordLength; ?></small>
-                                <?php } ?>
-                            </div>
-                            <input type="password" name="password" id="passwordField" placeholder="Create a password" class="inputs" required />
-                        </div>
-                        <div class="input-content passToggle">
-                            <input type="checkbox" id="passwordToggle" class="inputs passwordToggler" onclick="togglePassword()" />
-                            <label for="passwordToggle">Show Password</label>
-                        </div>
-                    </div>
-
-                    <div class="password-requirement">
-                        <div class="requirementBox">
-                            <i class='bx bx-arrow-back'></i>
-                            <p>Minimum 8 characters long</p>
-                        </div>
-                        <div class="requirementBox">
-                            <i class='bx bx-arrow-back'></i>
-                            <p>A uppercase letter</p>
-                        </div>
-                        <div class="requirementBox">
-                            <i class='bx bx-arrow-back'></i>
-                            <p>A lowercase letter</p>
-                        </div>
-                        <div class="requirementBox">
-                            <i class='bx bx-arrow-back'></i>
-                            <p>A number</p>
-                        </div>
-                    </div>
-
-                    <div class="btn-container">
-                        <!-- <input type="submit" value="submit" id="submitBtn"> -->
-                        <button class="next-step btns2" type="submit" name="submit">Submit</button>
-                        <button class="go-back btns2 stagebtn4a" id="goBack">Go Back</button>
-                    </div>
-                </div>
             </form>
         </div>
     </div>
@@ -480,23 +443,23 @@ if (isset($_POST['submit'])) {
         stagebtn3a.addEventListener("click", stage3to2);
 
 
-        function stage3to4(event) {
-            event.preventDefault();
-            thirdContainer.classList.add("hidden");
-            fourthContainer.classList.remove("hidden");
-            step3btn.classList.remove("lists-active");
-            step4btn.classList.add("lists-active");
-        }
-        stagebtn3b.addEventListener("click", stage3to4);
+        // function stage3to4(event) {
+        //     event.preventDefault();
+        //     thirdContainer.classList.add("hidden");
+        //     fourthContainer.classList.remove("hidden");
+        //     step3btn.classList.remove("lists-active");
+        //     step4btn.classList.add("lists-active");
+        // }
+        // stagebtn3b.addEventListener("click", stage3to4);
 
-        function stage4to3(event) {
-            event.preventDefault();
-            thirdContainer.classList.remove("hidden");
-            fourthContainer.classList.add("hidden");
-            step3btn.classList.add("lists-active");
-            step4btn.classList.remove("lists-active");
-        }
-        stagebtn4a.addEventListener("click", stage4to3);
+        // function stage4to3(event) {
+        //     event.preventDefault();
+        //     thirdContainer.classList.remove("hidden");
+        //     fourthContainer.classList.add("hidden");
+        //     step3btn.classList.add("lists-active");
+        //     step4btn.classList.remove("lists-active");
+        // }
+        // stagebtn4a.addEventListener("click", stage4to3);
 
 
         document.addEventListener("DOMContentLoaded", function() {

@@ -33,16 +33,26 @@ class User extends Common
                  email='$this->email' and 
                  password='$encryptedPassword'";
         $var = $conn->query($sql);
-        if ($var->num_rows > 0) {
-            $data = $var->fetch_object();
-            @session_start();
-            $_SESSION['id'] = $data->id;
-            $_SESSION['fullname'] = $data->fullname;
-            $_SESSION['email'] = $data->email;
-            $_SESSION['role'] = $data->role;
-            $_SESSION['image'] = $data->image;
-            setcookie('email', $data->email, time() + 60 * 60);
-            header('Location:index.php?v="Logged In Successfully!"');
+        $data = $var->fetch_object();
+
+        if ($data->email == $this->email || $data->password == $this->password) {
+
+            if ($data->status == 0) {
+                $error = "Your approval is pending!";
+                return $error;
+            } else if ($var->num_rows > 0) {
+                @session_start();
+                $_SESSION['id'] = $data->id;
+                $_SESSION['fullname'] = $data->fullname;
+                $_SESSION['email'] = $data->email;
+                $_SESSION['role'] = $data->role;
+                $_SESSION['image'] = $data->image;
+                setcookie('email', $data->email, time() + 60 * 60);
+                header('Location:index.php?v="Logged In Successfully!"');
+            } else {
+                $error = "Error Occured!";
+                return $error;
+            }
         } else {
             $error = "Invalid Credentials!";
             return $error;
@@ -64,22 +74,26 @@ class User extends Common
     }
 
 
-    // public function edit()
-    // {
-    //     $conn = mysqli_connect('localhost', 'root', '', 'outsidelime');
-    //     $sql = "update slider set banner_title='$this->banner_title',
-    //                                 banner_quote='$this->banner_quote',
-    //                                 banner_img='$this->banner_img',
-    //                                 banner_link='$this->banner_link',
-    //                                 status='$this->status'
-    //                                 where banner_id='$this->banner_id'";
-    //     $conn->query($sql);
-    //     if ($conn->affected_rows == 1) {
-    //         return $this->banner_id;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    public function edit()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "update users set fullname='$this->fullname',
+                                    email='$this->email',
+                                    age='$this->age',
+                                    phone='$this->phone',
+                                    gender='$this->gender',
+                                        occupation='$this->occupation',
+                                        area='$this->area',
+                                        address='$this->address',
+                                        image='$this->image'
+                                    where id='$this->id'";
+        $conn->query($sql);
+        if ($conn->affected_rows == 1) {
+            return $this->id;
+        } else {
+            return false;
+        }
+    }
     public function delete()
     {
         $conn = mysqli_connect('localhost', 'root', '', 'homesolution');

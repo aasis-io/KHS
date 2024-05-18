@@ -474,14 +474,14 @@ a.cta-explore:hover {
 }
 
 .userReviews .buttonList > li:last-child > a {
-  background-image: none;
   box-shadow: none;
-  color: var(--accent-clr);
+  color: var(--white-clr);
+  background: var(--dark-accent);
   text-decoration: underline;
   transition: 0.3s ease;
 }
 .userReviews .buttonList > li:last-child > a:hover {
-  font-size: 18px;
+  background: var(--accent-clr);
 }
 /*======
  Services Css 

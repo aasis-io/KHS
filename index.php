@@ -5,7 +5,6 @@ if (isset($_GET['v'])) {
     $msg = $_GET['v'];
 }
 
-
 ?>
 
 

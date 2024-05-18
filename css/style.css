@@ -327,6 +327,11 @@ small {
   place-items: center;
 }
 
+#wrapper > small {
+  position: relative;
+  right: 0;
+  margin-bottom: 1rem;
+}
 .form-container {
   background-color: var(--White);
   padding: 1rem;

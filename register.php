@@ -66,21 +66,29 @@ if (isset($_POST['submit'])) {
   if (empty($_FILES['image']['name'])) {
     $imageError = "Image Not Selected!";
   } elseif ($_FILES['image']['error'] == 0) {
-    if (
-      $_FILES['image']['type'] == "image/png" ||
-      $_FILES['image']['type'] == "image/jpg" ||
-      $_FILES['image']['type'] == "image/jpeg"
-    ) {
+    $allowedTypes = ['image/png', 'image/jpg', 'image/jpeg'];
+    if (in_array($_FILES['image']['type'], $allowedTypes)) {
       if ($_FILES['image']['size'] <= 1024 * 1024) {
-        $imageName = uniqid() . $_FILES['image']['name'];
-        if (move_uploaded_file($_FILES['image']['tmp_name'], 'images' . DIRECTORY_SEPARATOR . $imageName)) {
-          $user->set('image', $imageName);
+        $originalName = basename($_FILES['image']['name']);
+        $uploadDir = 'images' . DIRECTORY_SEPARATOR;
+        $uploadPath = $uploadDir . $originalName;
+
+        // Handle name collision
+        $fileInfo = pathinfo($originalName);
+        $baseName = $fileInfo['filename'];
+        $extension = $fileInfo['extension'] ? '.' . $fileInfo['extension'] : '';
+        for ($counter = 1; file_exists($uploadPath); $counter++) {
+          $uploadPath = $uploadDir . $baseName . '_' . $counter . $extension;
+        }
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadPath)) {
+          $user->set('image', basename($uploadPath));
         } else {
-          $imageError = "Error moving uploaded file: " . error_get_last()['message'];
+          $imageError = "Error moving uploaded file.";
           file_put_contents('upload_debug.log', $imageError . PHP_EOL, FILE_APPEND);
         }
       } else {
-        $imageError = "Error, Exceeded 1mb!";
+        $imageError = "Error, Exceeded 1MB!";
       }
     } else {
       $imageError = "Invalid Image!";
