@@ -67,6 +67,25 @@ ul {
   height: 100%;
   object-fit: cover;
 }
+
+#toggleMenu,
+#navCloser {
+  display: flex;
+  place-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  color: var(--accent-clr);
+}
+#toggleMenu > i {
+  font-size: 1.75rem;
+}
+
+#navCloser > i {
+  font-size: 2rem;
+}
+
 .nav-list {
   display: flex;
 }
@@ -643,10 +662,6 @@ Review
   max-width: 60%;
 }
 
-.name-title {
-  /* width: 50%; */
-}
-
 .name-title span {
   margin-top: 1rem;
   display: block;
@@ -729,4 +744,46 @@ Question Page
 
 .questionPage .questionButtons > .btn-grad.btnWhite:hover {
   background: var(--piction-clr);
+}
+
+/*==================================*/
+
+@media screen and (max-width: 991px) {
+  #myNavbar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--white-clr);
+    display: flex;
+    place-items: center;
+    justify-content: center;
+  }
+  #myNavbar,
+  #navCloser {
+    display: none;
+  }
+
+  #myNavbar > ul {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 991px) {
+  #toggleMenu {
+    display: none;
+  }
+}
+
+#navCloser {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+#navCloser {
+  display: none;
+}
+#myNavbar.active {
+  display: flex !important;
 }

@@ -31,9 +31,10 @@ if (isset($_GET['v'])) {
     <div id="wrapper">
         <div class="header">
             <a class="logo" href="index.php"><img src="images/logo.png" alt=""></a>
-            <nav>
+            <nav id="myNavbar" class="meroNavbar">
+                <button id="navCloser" class="bandaGar"><i class='bx bx-x'></i></button>
                 <ul class="nav-list">
-                    <li><a href="">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
 
                         <ul class="dropdown-menu">
@@ -88,6 +89,8 @@ if (isset($_GET['v'])) {
 
                 </ul>
             </nav>
+            <button id="toggleMenu" class="menuToggle">MENU <i class='bx bx-menu'></i></button>
+
         </div>
         <div class="container">
             <div class="hero-section">
@@ -110,15 +113,9 @@ if (isset($_GET['v'])) {
 
     <script src="js/script.js"></script>
 
-    <script>
-        var alertContainer = document.getElementById("alertContainer");
 
-        setTimeout(function() {
-            alertContainer.style.opacity = "0";
-        }, 5000);
-        setTimeout(function() {
-            alertContainer.style.display = "none";
-        }, 6000);
+    <script>
+        
 
         document.addEventListener("DOMContentLoaded", function() {
             const profileDrop = document.querySelector('.profile-drop');

@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
                     <div class="label-container">
                         <label for="password">Password</label>
                     </div>
-                    <input type="password" name="password" placeholder="Enter your password" class="inputs" id="passwordField" required />
+                    <input type="password" name="password" placeholder="Enter your password" class="inputs passwordField" required />
                     <i class="fa-solid fa-eye-slash" id="password-hidden"></i>
                     <i class="fa-solid fa-eye hide" id="password-shown"></i>
                     <?php if (isset($error['password'])) { ?>
@@ -85,7 +85,6 @@ if (isset($_POST['submit'])) {
 
     <script src="https://kit.fontawesome.com/1f2d50e34f.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
-
 
 </body>
 
