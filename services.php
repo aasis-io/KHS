@@ -25,9 +25,12 @@ if (isset($_GET['v'])) {
 <body>
     <?php if (isset($msg)) { ?>
         <div class="alert-container" id="alertContainer">
-            <div class="alert alert-success"><?php echo $msg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
-        </div>
-    <?php } ?>
+            <div class="alert alert-success"><?php echo $msg;  ?>
+                <button class="alertTerminator" id="closeAlerts">
+                    <i class="bx bx-x"></i>
+                </button>
+            </div>
+        </div> <?php  } ?>
 
     <div id="wrapper">
         <div class="header">

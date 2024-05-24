@@ -118,4 +118,68 @@ class User extends Common
             return [];
         }
     }
+
+    public function retrievePending()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "select * from users where status = 0";
+        $var = $conn->query($sql);
+        if ($var->num_rows > 0) {
+            $datalist = $var->fetch_all(MYSQLI_ASSOC);
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
+
+    public function activeStatus()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "update users set status = 1 where id='$this->id'";
+        $conn->query($sql);
+        if ($conn->affected_rows == 1) {
+            // header("Location:editStatus.php?id=" . $this->id);
+            header("Location:pending.php?v=The status is updated successfully to active!");
+            return $this->id;
+        } else {
+            return false;
+        }
+    }
+
+    public function pendingStatus()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "update users set status = 0 where id='$this->id'";
+        $conn->query($sql);
+        if ($conn->affected_rows == 1) {
+            header("Location:pending.php?v=The status is updated successfully to pending!");
+            return $this->id;
+        } else {
+            return false;
+        }
+    }
+
+    public function rejectAccount()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "delete from users where id='$this->id'";
+        $var = $conn->query($sql);
+        if ($var) {
+            return "success";
+        } else {
+            return "failed";
+        }
+    }
+    public function retrieveAll()
+    {
+        $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
+        $sql = "select * from users";
+        $var = $conn->query($sql);
+        if ($var->num_rows > 0) {
+            $datalist = $var->fetch_all(MYSQLI_ASSOC);
+            return $datalist;
+        } else {
+            return false;
+        }
+    }
 }

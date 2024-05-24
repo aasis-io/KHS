@@ -11,6 +11,9 @@
   --background-clr: hsl(217, 100%, 97%);
   --piction-clr: #03aec6;
   --orange-clr: rgb(255, 115, 0);
+  --green-clr: #28a745;
+  --red-clr: #dc3545;
+  --blue-clr: #007bff;
 }
 
 body {
@@ -325,6 +328,15 @@ a.cta-explore:hover {
 
 .detail > p > span {
   font-weight: 400;
+}
+
+.detail > p a {
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  color: var(--text-clr);
+  margin-left: 1rem;
+  font-family: var(--primary-font) !important;
+  text-decoration: underline;
 }
 
 .linkButton {
@@ -786,4 +798,20 @@ Question Page
 }
 #myNavbar.active {
   display: flex !important;
+}
+
+/*////////*/
+
+.pending {
+  background: var(--blue-clr);
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: var(--white-clr);
+}
+
+.approved {
+  background: var(--green-clr);
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: var(--white-clr);
 }

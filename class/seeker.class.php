@@ -4,12 +4,12 @@ require_once('common.class.php');
 
 class Seeker extends Common
 {
-    public $id, $fullname, $email,$password, $role;
+    public $id, $fullname, $email,$password, $role, $phone;
 
     public function save()
     {
         $conn = mysqli_connect('localhost', 'root', '', 'homesolution');
-        $sql = "insert into seeker(fullname, email, password) values('$this->fullname','$this->email', MD5('$this->password'))";
+        $sql = "insert into seeker(fullname, email, password, phone) values('$this->fullname','$this->email', MD5('$this->password'), '$this->phone')";
 
         $conn->query($sql);
 

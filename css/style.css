@@ -376,17 +376,19 @@ small {
   position: relative;
 }
 
-.form-container > form > .input-content i {
-  position: absolute;
-  right: 12px;
-  bottom: 15px;
-}
-.form-container > form > .input-content i {
+.form-container > form > .input-content > button {
   position: absolute;
   right: 12px;
   bottom: 15px;
   cursor: pointer;
+  background: none;
+  border: none;
 }
+/* .form-container > form > .input-content > button {
+  position: absolute;
+  right: 12px;
+  bottom: 15px;
+} */
 
 .form-container p {
   margin-top: 1rem;
@@ -394,6 +396,6 @@ small {
   text-align: center;
 }
 
-.form-container > form > .input-content i.hide {
+.form-container > form > .input-content > button.hide {
   display: none;
 }

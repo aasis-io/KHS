@@ -47,9 +47,13 @@ $user_id = $_GET['id'];
 
 <body>
 
-    <?php if (isset($msg)) { ?>
+<?php if (isset($msg)) { ?>
         <div class="alert-container" id="alertContainer">
-            <div class="alert alert-success"><?php echo $msg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+            <div class="alert alert-success"><?php echo $msg;  ?>
+                <button class="alertTerminator" id="closeAlerts">
+                    <i class="bx bx-x"></i>
+                </button>
+            </div>
         </div> <?php  } ?>
 
     <div id="wrapper">

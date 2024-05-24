@@ -45,6 +45,11 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div id="wrapper">
+        <?php
+        if (isset($status)) {
+            echo "<small class='statusError'>$status</small>";
+        }
+        ?>
         <div class="form-container">
             <h2>Login</h2>
             <form method="post" novalidate>
@@ -62,19 +67,14 @@ if (isset($_POST['submit'])) {
                         <label for="password">Password</label>
                     </div>
                     <input type="password" name="password" placeholder="Enter your password" class="inputs" id="passwordField" required />
-                    <i class="fa-solid fa-eye-slash" id="password-hidden"></i>
-                    <i class="fa-solid fa-eye hide" id="password-shown"></i>
+                    <button id="showPassword" type="button"><i class="fa-solid fa-eye-slash"></i></button>
+                    <button id="hidePassword" class="hide" type="button"> <i class="fa-solid fa-eye"></i></button>
                     <?php if (isset($error['password'])) { ?>
                         <small class="loginError"> <?php echo $error['password']; ?> </small>
                     <?php } ?>
-                    <?php
-                    if (isset($status)) {
-                        echo "<small>$status</small>";
-                    }
-                    ?>
+
                 </div>
                 <button type="submit" name="submit">Sign In</button>
-                <!-- <input type="submit" name="submit" value="Log In"> -->
 
             </form>
             <p>Not Registered? <a href="register.php">Sign Up Here</a></p>
@@ -84,7 +84,6 @@ if (isset($_POST['submit'])) {
 
     <script src="https://kit.fontawesome.com/1f2d50e34f.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
-
 
 </body>
 

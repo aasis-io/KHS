@@ -67,9 +67,9 @@ if (isset($_POST['submit'])) {
                     <div class="label-container">
                         <label for="password">Password</label>
                     </div>
-                    <input type="password" name="password" placeholder="Enter your password" class="inputs passwordField" required />
-                    <i class="fa-solid fa-eye-slash" id="password-hidden"></i>
-                    <i class="fa-solid fa-eye hide" id="password-shown"></i>
+                    <input type="password" name="password" placeholder="Enter your password" class="inputs" id="passwordField" required />
+                    <button id="showPassword" type="button"><i class="fa-solid fa-eye-slash"></i></button>
+                    <button id="hidePassword" class="hide" type="button"> <i class="fa-solid fa-eye"></i></button>
                     <?php if (isset($error['password'])) { ?>
                         <small class="loginError"> <?php echo $error['password']; ?> </small>
                     <?php } ?>

@@ -84,17 +84,29 @@ if (isset($_POST['submit'])) {
     <a href="#" class="accHome" onclick="history.go(-1)"><i class="fa-solid fa-arrow-left"></i> Go Back</a>
     <?php if (isset($msg)) { ?>
         <div class="alert-container" id="alertContainer">
-            <div class="alert alert-success"><?php echo $msg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+            <div class="alert alert-success"><?php echo $msg;  ?>
+                <button class="alertTerminator" id="closeAlerts">
+                    <i class="bx bx-x"></i>
+                </button>
+            </div>
         </div> <?php  } ?>
 
     <?php if (isset($ErrMsg)) { ?>
-        <div class="alert-container">
-            <div class="alert alert-danger"><?php echo $ErrMsg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+        <div class="alert-container" id="alertContainer">
+            <div class="alert alert-danger"><?php echo $ErrMsg;  ?>
+                <button class="alertTerminator" id="closeAlerts">
+                    <i class="bx bx-x"></i>
+                </button>
+            </div>
         </div> <?php  } ?>
 
     <?php if (isset($globalError)) { ?>
         <div class="alert-container">
-            <div class="alert alert-danger"><?php echo $globalError; ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+            <div class="alert alert-danger"><?php echo $globalError; ?>
+                <button class="alertTerminator" id="closeAlerts">
+                    <i class="bx bx-x"></i>
+                </button>
+            </div>
         </div> <?php  } ?>
     <div class="review-wrapper">
         <div class="name-title">
@@ -124,8 +136,8 @@ if (isset($_POST['submit'])) {
                         <small class="error-message"> <?php echo $emptyEmail; ?></small>
                     <?php } ?>
                     <input type="text" name="email" placeholder="Your email here" value="<?php if ($_SESSION['role'] == "seeker") {
-                                                                                                    echo $_SESSION['email'];
-                                                                                                } ?>">
+                                                                                                echo $_SESSION['email'];
+                                                                                            } ?>">
                 </div>
                 <div class="input-area">
                     <label for="rating">How would you rate your experience?</label>
