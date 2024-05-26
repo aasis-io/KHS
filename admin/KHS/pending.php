@@ -1,4 +1,6 @@
 <?php
+
+include('header/header.php');
 include('../../class/user.class.php');
 include('../../class/area.class.php');
 include('../../class/profession.class.php');

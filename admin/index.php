@@ -78,7 +78,6 @@ if (isset($_POST['submit'])) {
                 <button type="submit" name="submit">Sign In</button>
 
             </form>
-            <p>Not Registered? <a href="register.php">Sign Up Here</a></p>
         </div>
         <a href="../index.php" class="homeRedirect">Go To Site Home Page &nbsp;<i class="fa-solid fa-up-right-from-square"></i></a>
     </div>

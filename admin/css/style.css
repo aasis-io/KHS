@@ -11,15 +11,6 @@
   --PastelBlue: hsl(228, 100%, 84%);
   --LightBlue: hsl(206, 94%, 87%);
   --red: hsl(354, 84%, 57%);
-  --accent-clr: #0b5f9a;
-  --text-clr: #414141;
-  --white-clr: #ffffff;
-  --dark-accent: #023461;
-  --primary-font: "Poppins", sans-serif;
-  --secondary-font: "Rubik", sans-serif;
-  --background-clr: hsl(217, 100%, 97%);
-  --piction-clr: #03aec6;
-  --orange-clr: rgb(255, 115, 0);
 }
 
 body {
@@ -36,18 +27,6 @@ body {
   place-items: center;
 }
 
-.container {
-  max-width: 80%;
-  width: 60%;
-  height: 550px;
-  background-color: var(--White);
-  padding: 10px;
-  display: flex;
-  justify-content: left;
-  align-items: top;
-  border-radius: 10px;
-  box-shadow: var(--LightGray) 5px 0px 10px;
-}
 
 .sidebar {
   width: 35%;
@@ -343,7 +322,7 @@ small {
 }
 .form-container {
   background-color: var(--White);
-  padding: 1rem;
+  padding: 1rem 1rem 1.5rem 1rem;
   display: flex;
   justify-content: center;
   border-radius: 10px;

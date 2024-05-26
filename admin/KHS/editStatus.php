@@ -1,14 +1,11 @@
 <?php
-
+include('header/header.php');
 include('../../class/user.class.php');
 
 
 $user = new User();
 $user->set('id', $_GET['id']);
 $retrieveUser = $user->getById();
-
-
-
 
 ?>
 

@@ -1,11 +1,6 @@
 <?php
 
-@session_start();
-if (!array_key_exists('email', $_SESSION) && !array_key_exists('email', $_COOKIE)) {
-    header('location:../index.php');
-}
-
-
+include('header/header.php');
 include('../../class/user.class.php');
 include('../../class/area.class.php');
 include('../../class/profession.class.php');
