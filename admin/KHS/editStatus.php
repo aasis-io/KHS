@@ -1,6 +1,6 @@
 <?php
 
-include('../class/user.class.php');
+include('../../class/user.class.php');
 
 
 $user = new User();
@@ -19,9 +19,9 @@ $retrieveUser = $user->getById();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KHS - User Profile</title>
-    <link rel="stylesheet" href="../css/home.min.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../../css/home.min.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/common.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 
@@ -34,7 +34,7 @@ $retrieveUser = $user->getById();
         <div class="container">
             <div class="userDetail">
                 <div class="profileImg">
-                    <img src="../images/<?php echo $retrieveUser->image; ?>" alt="">
+                    <img src="../../images/<?php echo $retrieveUser->image; ?>" alt="">
                 </div>
                 <div class="allDetail">
                     <div class="detail">
@@ -90,7 +90,7 @@ $retrieveUser = $user->getById();
         </div>
     </div>
 
-    <script src="../js/script.js"></script>
+    <script src="js/script.js"></script>
     <script src="https://kit.fontawesome.com/1f2d50e34f.js" crossorigin="anonymous"></script>
     <script>
         document.getElementById("deletePopUp").addEventListener("click", function() {

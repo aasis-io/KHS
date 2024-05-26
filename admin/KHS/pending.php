@@ -1,8 +1,8 @@
 <?php
-include('../class/user.class.php');
-include('../class/area.class.php');
-include('../class/profession.class.php');
-include('../class/rating.class.php');
+include('../../class/user.class.php');
+include('../../class/area.class.php');
+include('../../class/profession.class.php');
+include('../../class/rating.class.php');
 
 
 if (isset($_GET['v'])) {
@@ -23,8 +23,8 @@ $userList = $user->retrievePending();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Table</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/common.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -71,7 +71,7 @@ $userList = $user->retrievePending();
 
     </div>
 
-    <script src="../js/script.js"></script>
+    <script src="js/script.js"></script>
     <script src="https://kit.fontawesome.com/1f2d50e34f.js" crossorigin="anonymous"></script>
 </body>
 

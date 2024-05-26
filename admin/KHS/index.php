@@ -15,11 +15,14 @@
             <li><a href="pending.php">Pending Approvals</a></li>
             <li><a href="">All Service Providers</a></li>
             <li><a href="">Service Seekers</a></li>
+            <li><a href="logout.php">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
 
         </ul>
     </div>
 
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/1f2d50e34f.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

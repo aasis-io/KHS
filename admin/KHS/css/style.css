@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --accent-clr: #0b5f9a;
+  --text-clr: #414141;
+  --white-clr: #ffffff;
+  --dark-accent: #023461;
+  --primary-font: "Poppins", sans-serif;
+  --secondary-font: "Rubik", sans-serif;
+  --background-clr: hsl(217, 100%, 97%);
+  --piction-clr: #03aec6;
+  --green-clr: #28a745;
+  --red-clr: #dc3545;
+  --blue-clr: #007bff;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  background-color: var(--background-clr);
+  width: 100%;
+  height: 100vh;
+  max-height: 9999px;
+  color: var(--text-color);
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--secondary-font);
+  color: var(--text-clr);
+}
+a,
+p {
+  color: var(--text-clr);
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  display: flex;
+  gap: 1rem;
+}
+ul > li {
+  display: flex;
+}
+
+ul > li > a {
+  padding: 2rem 3rem;
+  background: var(--dark-accent);
+  color: var(--white-clr);
+  border-radius: 8px;
+  transition: 0.5s;
+}
+
+ul > li > a:hover {
+  background: var(--accent-clr);
+}
+
+.table-container {
+  width: 90%;
+  max-width: 1000px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  text-align: left;
+  background-color: #ffffff;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: var(--accent-clr);
+  color: var(--white-clr);
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* tr:hover {
+  background-color: #f1f1f1;
+} */
+
+td.action {
+  display: flex;
+  gap: 1rem;
+}
+
+.action a {
+  color: var(--white-clr);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font: var(--primary-font);
+  transition: 1s ease;
+}
+
+.action > .e-user {
+  background: var(--blue-clr);
+}
+
+.action > .e-user:hover {
+  background: blue;
+}
+.action > .d-user {
+  background: var(--red-clr);
+}
+
+.action > .d-user:hover {
+  background: red;
+}
+
+.redirectLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.redirectLinks > a {
+  padding: 12px 16px;
+  color: var(--accent-clr);
+  transition: 0.4s ease;
+}
+
+.redirectLinks > a:hover {
+  color: var(--piction-clr);
+}
+
+/*////////*/
+
+.pending {
+  background: var(--blue-clr);
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: var(--white-clr);
+}
+
+.approved {
+  background: var(--green-clr);
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: var(--white-clr);
+}
