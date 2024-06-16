@@ -33,6 +33,8 @@ if (isset($_POST['submit'])) {
 
   if (empty($_POST['age'])) {
     $emptyAge = "Age Field Empty!";
+  } else if ($_POST['age'] < 18 || $_POST > 60) {
+    $invalidAge = "Age is less than 18 or greater than 60!";
   }
 
   if (empty($_POST['email'])) {
@@ -76,9 +78,11 @@ if (isset($_POST['submit'])) {
         // Handle name collision
         $fileInfo = pathinfo($originalName);
         $baseName = $fileInfo['filename'];
-        $extension = $fileInfo['extension'] ? '.' . $fileInfo['extension'] : '';
-        for ($counter = 1; file_exists($uploadPath); $counter++) {
+        $extension = isset($fileInfo['extension']) ? '.' . $fileInfo['extension'] : '';
+        $counter = 1;
+        while (file_exists($uploadPath)) {
           $uploadPath = $uploadDir . $baseName . '_' . $counter . $extension;
+          $counter++;
         }
 
         if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadPath)) {
@@ -94,6 +98,7 @@ if (isset($_POST['submit'])) {
       $imageError = "Invalid Image!";
     }
   }
+
 
 
   if (empty($_POST['password'])) {
@@ -243,7 +248,14 @@ if (isset($_POST['submit'])) {
 
                   <small class="error-message"> <?php echo $emptyAge; ?> </small>
 
+                <?php } else if (isset($invalidAge)) { ?>
+                  <small class="error-message"> <?php echo $invalidAge; ?> </small>
+
                 <?php } ?>
+
+
+
+
               </div>
               <input type="number" name="age" placeholder="Enter your age" class="inputs" required />
             </div>

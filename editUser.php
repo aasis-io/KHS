@@ -66,29 +66,50 @@ if (isset($_POST['submit'])) {
         $emptyAddress = "Address Field Empty!";
     }
 
-    if (empty($_FILES['image']['name'])) {
-        $imageError = "Image Not Selected!";
-    } elseif ($_FILES['image']['error'] == 0) {
-        if (
-            $_FILES['image']['type'] == "image/png" ||
-            $_FILES['image']['type'] == "image/jpg" ||
-            $_FILES['image']['type'] == "image/jpeg"
-        ) {
-            if ($_FILES['image']['size'] <= 1024 * 1024) {
-                $imageName = uniqid() . $_FILES['image']['name'];
-                if (move_uploaded_file($_FILES['image']['tmp_name'], 'images' . DIRECTORY_SEPARATOR . $imageName)) {
-                    $user->set('image', $imageName);
+    if (!empty($_FILES['image']['name'])) {
+        if ($_FILES['image']['error'] == 0) {
+            $allowedTypes = ['image/png', 'image/jpg', 'image/jpeg'];
+            if (in_array($_FILES['image']['type'], $allowedTypes)) {
+                if ($_FILES['image']['size'] <= 1024 * 1024) {
+                    $originalName = basename($_FILES['image']['name']);
+                    $uploadDir = 'images' . DIRECTORY_SEPARATOR;
+                    $uploadPath = $uploadDir . $originalName;
+
+                    // Handle name collision
+                    $fileInfo = pathinfo($originalName);
+                    $baseName = $fileInfo['filename'];
+                    $extension = isset($fileInfo['extension']) ? '.' . $fileInfo['extension'] : '';
+                    $counter = 1;
+                    while (file_exists($uploadPath)) {
+                        $uploadPath = $uploadDir . $baseName . '_' . $counter . $extension;
+                        $counter++;
+                    }
+
+                    if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadPath)) {
+                        // Optionally delete old image file
+                        if (!empty($retrieveUser->image)) {
+                            $oldImagePath = $uploadDir . $retrieveUser->image;
+                            if (file_exists($oldImagePath)) {
+                                unlink($oldImagePath);
+                            }
+                        }
+                        $user->set('image', basename($uploadPath));
+                    } else {
+                        $imageError = "Error moving uploaded file.";
+                        file_put_contents('upload_debug.log', $imageError . PHP_EOL, FILE_APPEND);
+                    }
                 } else {
-                    $imageError = "Error moving uploaded file: " . error_get_last()['message'];
-                    file_put_contents('upload_debug.log', $imageError . PHP_EOL, FILE_APPEND);
+                    $imageError = "Error, Exceeded 1MB!";
                 }
             } else {
-                $imageError = "Error, Exceeded 1mb!";
+                $imageError = "Invalid Image!";
             }
-        } else {
-            $imageError = "Invalid Image!";
         }
+    } else {
+        // Retain existing image
+        $user->set('image', $retrieveUser->image);
     }
+
 
 
 
@@ -320,7 +341,7 @@ if (isset($_POST['submit'])) {
                                 <option disabled selected>Select Your Profession</option>
                                 <?php
                                 foreach ($professionList as $p) { ?>
-                                    <option value="<?php echo $p['name']; ?>" <?php if ($retrieveUser->profession == $a['profession']) {
+                                    <option value="<?php echo $p['name']; ?>" <?php if ($retrieveUser->profession == $p['profession']) {
                                                                                     echo "selected";
                                                                                 } ?>><?php echo $p['name']; ?></option>
 

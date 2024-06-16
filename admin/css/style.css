@@ -245,7 +245,8 @@ form {
 }
 small {
   position: absolute;
-  right: 70px;
+  right: 0;
+  top: 8px;
   color: red !important;
 }
 

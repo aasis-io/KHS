@@ -39,14 +39,16 @@ if (isset($_GET['v'])) {
                 <button id="navCloser" class="bandaGar"><i class='bx bx-x'></i></button>
                 <ul class="nav-list">
                     <li><a href="index.php">Home</a></li>
-                    <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
+                    <li class="dropdown"><a href="services.php">Services
+                        <!-- <i class='bx bxs-chevron-down'></i> -->
+                    </a>
 
-                        <ul class="dropdown-menu">
+                        <!-- <ul class="dropdown-menu">
                             <li><a href="services.php">Plumber</a></li>
                             <li><a href="">Electrician</a></li>
                             <li><a href="">Carpenter</a></li>
                             <li><a href="">Painter</a></li>
-                        </ul>
+                        </ul> -->
 
                     </li>
                     <li><a href="">About Us</a></li>

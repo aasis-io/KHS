@@ -1,6 +1,8 @@
 <?php
 
+
 include('header/header.php');
+
 
 ?>
 
@@ -19,8 +21,8 @@ include('header/header.php');
     <div class="content_box">
         <ul>
             <li><a href="pending.php">Pending Approvals</a></li>
-            <li><a href="">All Service Providers</a></li>
-            <li><a href="">Service Seekers</a></li>
+            <li><a href="allUser.php">All Service Providers</a></li>
+            <!-- <li><a href="">Service Seekers</a></li> -->
             <li><a href="logout.php">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
 
         </ul>

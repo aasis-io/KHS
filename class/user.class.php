@@ -139,7 +139,7 @@ class User extends Common
         $conn->query($sql);
         if ($conn->affected_rows == 1) {
             // header("Location:editStatus.php?id=" . $this->id);
-            header("Location:pending.php?v=The status is updated successfully to active!");
+            header("Location:editStatus.php?v=The status is updated successfully to active! & id=" . $this->id);
             return $this->id;
         } else {
             return false;
@@ -152,7 +152,7 @@ class User extends Common
         $sql = "update users set status = 0 where id='$this->id'";
         $conn->query($sql);
         if ($conn->affected_rows == 1) {
-            header("Location:pending.php?v=The status is updated successfully to pending!");
+            header("Location:editStatus.php?v=The status is updated successfully to pending! & id=" . $this->id);
             return $this->id;
         } else {
             return false;

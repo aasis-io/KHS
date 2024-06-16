@@ -23,7 +23,7 @@ $userList = $user->retrievePending();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Table</title>
+    <title>Pending User</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="../../css/responsive.css">
     <link rel="stylesheet" href="../../css/common.min.css">
@@ -36,8 +36,10 @@ $userList = $user->retrievePending();
             <div class="alert alert-success"><?php echo $msg;  ?> <button class="alertTerminator" id="closeAlerts"><i class="bx bx-x"></i></button> </div>
         </div>
     <?php } ?>
+
     <div class="table-container">
         <h2>Pending Approvals</h2>
+
         <table>
             <thead>
                 <tr>
@@ -50,25 +52,35 @@ $userList = $user->retrievePending();
             </thead>
             <tbody>
 
-                <?php foreach ($userList as $key => $u) { ?>
-                    <tr>
-                        <td><?php echo $key + 1; ?></td>
-                        <td><?php echo $u['fullname']; ?></td>
-                        <td><?php echo $u['email']; ?></td>
-                        <td><?php echo $u['phone']; ?></td>
-                        <td class="action"><a href="editStatus.php?id=<?php echo $u['id'] ?>" class="e-user"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                            <a href="editStatus.php?id=<?php echo $u['id'] ?>" class="d-user"><i class="fa-solid fa-trash"></i> Reject</a>
-                        </td>
-                    </tr>
 
-                <?php } ?>
+
+                <?php
+
+                if (empty($userList)) {
+                    echo "<tr>
+    <td colspan='5' style='text-align: center;'>There are no pending users.</td>
+</tr>"; // Display "No users found" message
+                } else {
+                    foreach ($userList as $key => $u) {  ?>
+                        <tr>
+                            <td><?php echo $key + 1; ?></td>
+                            <td><?php echo $u['fullname']; ?></td>
+                            <td><?php echo $u['email']; ?></td>
+                            <td><?php echo $u['phone']; ?></td>
+                            <td class="action"><a href="editStatus.php?id=<?php echo $u['id'] ?>" class="e-user"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                <a href="editStatus.php?id=<?php echo $u['id'] ?>" class="d-user"><i class="fa-solid fa-trash"></i> Reject</a>
+                            </td>
+                        </tr>
+                <?php  }
+                } ?>
+
 
             </tbody>
         </table>
 
         <div class="redirectLinks">
             <a href="allUser.php">View All Users <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <a href="../index.php">Go to site home page <i class="fa-solid fa-up-right-from-square"></i></a>
+            <a href="../../index.php">Go to site home page <i class="fa-solid fa-up-right-from-square"></i></a>
         </div>
 
     </div>

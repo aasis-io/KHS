@@ -2,4 +2,5 @@
 session_start();
 session_destroy();
 setcookie('username', '',  Time() - 60 * 60);
+setcookie('email', '',  Time() - 60 * 60);
 header('location:index.php?v="Logged Out Successfully!"');

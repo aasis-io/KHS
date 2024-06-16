@@ -7,6 +7,9 @@ $user = new User();
 $user->set('id', $_GET['id']);
 $retrieveUser = $user->getById();
 
+if (isset($_GET['v'])) {
+    $msg = $_GET['v'];
+}
 
 ?>
 
@@ -26,7 +29,23 @@ $retrieveUser = $user->getById();
 </head>
 
 <body>
+    <?php if (isset($msg)) { ?>
+        <div class="alert-container" id="alertContainer">
+            <div class="alert alert-success"><?php echo $msg;  ?>
+                <button class="alertTerminator" id="closeAlerts">
+                    <i class="bx bx-x"></i>
+                </button>
+            </div>
+        </div> <?php  } ?>
+    <?php if (isset($ErrMsg)) { ?>
+        <div class="alert-container">
+            <div class="alert alert-danger"><?php echo $ErrMsg;  ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+        </div> <?php  } ?>
 
+    <?php if (isset($globalError)) { ?>
+        <div class="alert-container">
+            <div class="alert alert-danger"><?php echo $globalError; ?> <button class="alertTerminator" onclick="alertCloser()"><i class="bx bx-x"></i></button> </div>
+        </div> <?php  } ?>
     <div id="wrapper">
         <a href="index.php" class="accHome"><i class="fa-solid fa-arrow-left"></i> Go to home page</a>
         <div class="container">
@@ -96,4 +115,3 @@ $retrieveUser = $user->getById();
 </body>
 
 </html>
-

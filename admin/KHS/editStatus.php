@@ -15,7 +15,7 @@ $retrieveUser = $user->getById();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KHS - User Profile</title>
+    <title>User Profile</title>
     <link rel="stylesheet" href="../../css/home.min.css">
     <link rel="stylesheet" href="../../css/responsive.css">
     <link rel="stylesheet" href="../../css/common.min.css">
@@ -27,7 +27,7 @@ $retrieveUser = $user->getById();
 <body>
 
     <div id="wrapper">
-        <a onclick="history.back()" type="button" class="accHome"><i class="fa-solid fa-arrow-left"></i> Go back</a>
+        <a type="button" class="accHome" href="allUser.php"><i class="fa-solid fa-arrow-left"></i> View all users</a>
         <div class="container">
             <div class="userDetail">
                 <div class="profileImg">
@@ -72,14 +72,14 @@ $retrieveUser = $user->getById();
                     </div>
 
                     <div class="detail linkButton">
-                        <button style="background: red;" id="deletePopUp"><i class="fa-solid fa-trash"></i> &nbsp;Reject User</button>
+                        <button style="background: red;" id="deletePopUp"><i class="fa-solid fa-trash"></i> &nbsp;Delete User</button>
                     </div>
                     <div class="deletePop">
                         <div class="deleteFace">
                             <h1>Confirm Rejection</h1>
                             <p>Are you sure you want to reject this user? This action cannot be undone.</p>
                             <button class="cancelPop">Cancel</button>
-                            <a class="deleteAccount" href="rejectAccount.php?id=<?php echo $_GET['id'] ?>">Reject</a>
+                            <a class="deleteAccount" href="rejectAccount.php?id=<?php echo $_GET['id'] ?>">Delete</a>
                         </div>
                     </div>
                 </div>
