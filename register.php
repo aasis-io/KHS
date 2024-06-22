@@ -3,13 +3,10 @@ include('class/user.class.php');
 include('class/area.class.php');
 include('class/profession.class.php');
 
-
 $area = new Area();
-
 $areaList = $area->retrieve();
 
 $profession = new Profession();
-
 $professionList = $profession->retrieve();
 
 $user = new User();
@@ -19,13 +16,10 @@ if (isset($_GET['v'])) {
 }
 
 $pattern = '/^(98[4-9]|97[7-9]|96[6-9])\d{7}$/';
-
 $passPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/';
 
-
 if (isset($_POST['submit'])) {
-
-  $emptyName = $emptyAge = $emptyEmail = $emptyPhone = $emptyGender = $emptyOccupation = $emptyArea = $emptyAddress = $emptyPassword = $invalidEmail = $invalidPhone = $invalidPasswordLength = $invalidPassword = '';
+  $emptyName = $emptyAge = $emptyEmail = $emptyPhone = $emptyGender = $emptyOccupation = $emptyArea = $emptyAddress = $emptyPassword = $invalidEmail = $invalidAge = $invalidPhone = $invalidPasswordLength = $invalidPassword = $imageError = '';
 
   if (empty($_POST['fullname'])) {
     $emptyName = "Name Field Empty!";
@@ -33,7 +27,9 @@ if (isset($_POST['submit'])) {
 
   if (empty($_POST['age'])) {
     $emptyAge = "Age Field Empty!";
-  } else if ($_POST['age'] < 18 || $_POST > 60) {
+  } elseif ($_POST['age'] < 0) {
+    $invalidAge = "Age cannot be negative!";
+  } elseif ($_POST['age'] < 18 || $_POST['age'] > 60) {
     $invalidAge = "Age is less than 18 or greater than 60!";
   }
 
@@ -99,17 +95,13 @@ if (isset($_POST['submit'])) {
     }
   }
 
-
-
   if (empty($_POST['password'])) {
     $emptyPassword = "Password Field Empty!";
   } elseif (strlen($_POST['password']) < 8 || !preg_match($passPattern, $_POST['password'])) {
     $invalidPasswordLength = "Invalid Password!";
   }
 
-
-  if (empty($emptyName) && empty($emptyAge) && empty($emptyEmail) && empty($emptyPhone) && empty($emptyGender) && empty($emptyOccupation) && empty($emptyArea) && empty($emptyAddress) && empty($emptyPassword) && empty($invalidEmail) && empty($invalidPhone) && empty($imageError) && empty($invalidPasswordLength) && empty($invalidPassword)) {
-
+  if (empty($emptyName) && empty($emptyAge) && empty($invalidAge) && empty($emptyEmail) && empty($emptyPhone) && empty($emptyGender) && empty($emptyOccupation) && empty($emptyArea) && empty($emptyAddress) && empty($emptyPassword) && empty($invalidEmail) && empty($invalidPhone) && empty($imageError) && empty($invalidPasswordLength) && empty($invalidPassword)) {
     $user->set('fullname', $_POST['fullname']);
     $user->set('email', $_POST['email']);
     $user->set('age', $_POST['age']);
@@ -214,7 +206,7 @@ if (isset($_POST['submit'])) {
 
 
               </div>
-              <input type="text" name="fullname" placeholder="e.g. Stephen King" class="inputs" required />
+              <input type="text" name="fullname" placeholder="e.g. Sandeep Pokhrel" class="inputs" required />
             </div>
             <div class="input-content">
               <div class="label-container">
@@ -244,15 +236,12 @@ if (isset($_POST['submit'])) {
             <div class="input-content">
               <div class="label-container">
                 <label for="age">Age</label>
-                <?php if (isset($emptyAge)) { ?>
-
-                  <small class="error-message"> <?php echo $emptyAge; ?> </small>
-
-                <?php } else if (isset($invalidAge)) { ?>
-                  <small class="error-message"> <?php echo $invalidAge; ?> </small>
-
+                <?php if (isset($invalidAge)) { ?>
+                  <small class="error-message"> <?php echo $invalidAge; ?></small>
                 <?php } ?>
-
+                <?php if (isset($emptyAge)) { ?>
+                  <small class="error-message"> <?php echo $emptyAge; ?> </small>
+                <?php } ?>
 
 
 

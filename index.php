@@ -40,8 +40,8 @@ if (isset($_GET['v'])) {
                 <ul class="nav-list">
                     <li><a href="index.php">Home</a></li>
                     <li class="dropdown"><a href="services.php">Services
-                        <!-- <i class='bx bxs-chevron-down'></i> -->
-                    </a>
+                            <!-- <i class='bx bxs-chevron-down'></i> -->
+                        </a>
 
                         <!-- <ul class="dropdown-menu">
                             <li><a href="services.php">Plumber</a></li>
@@ -51,7 +51,7 @@ if (isset($_GET['v'])) {
                         </ul> -->
 
                     </li>
-                    <li><a href="">About Us</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                     <?php if (isset($_SESSION['email']) && $_SESSION['role'] == "user") { ?>
 

@@ -52,20 +52,26 @@ if (empty($filteredUsers)) {
         $reviewCount = $rating->countReviewsForUser($u['id']);
         $averageRating = $rating->getAverageRatingOfUser($u['id']);
 
+?>
 
-        echo "<tr>";
-        echo "<td>" . ($key + 1) . "</td>";
-        echo "<td class='img-name'><img src='images/" . $u['image'] . "' alt=''> <a href='view_user.php?id=" . $u['id'] . "'>" . $u['fullname'] . " </a> </td>";
-        echo "<td>" . $u['area'] . "</td>";
-        echo "<td>" . $u['occupation'] . "</td>";
-        echo "<td>" . $u['phone'] . "</td>";
+        <tr>
+            <td> <?php echo ($key + 1); ?></td>
+            <td class='img-name'><img src='images/<?php echo $u['image']; ?>' alt=''> <a href='view_user.php?id="<?php $u['id'] ?>"'> <?php echo $u['fullname']; ?></a></td>";
+            <td> <?php echo $u['area']; ?></td>;
+            <td> <?php echo $u['occupation']; ?></td>;
 
-        if ($reviewCount > 0) {
-            echo "<td>" . round($averageRating, 1) . " <i class='bx bxs-star'></i> • <a href='view_user.php?id=" . $u['id'] . "'>" . $reviewCount . " Reviews </a></td>";
-        }
-        else{
-            echo "<td> Not reviewed yet </td>";
-        }
-        echo "</tr>";
+            <?php
+            if ($reviewCount > 0) { ?>
+                <td> <?php echo round($averageRating, 1); ?><i class='bx bxs-star'></i> • <a href='view_user.php?id="<?php echo $u['id'] ?>"'> <?php echo $reviewCount; ?> Reviews</a></td>
+            <?php } else { ?>
+                <td> Not reviewed yet </td>
+            <?php } ?>
+
+            <td><a href='process_view.php?id=<?php echo $u['id'] ?>'>View Contact</a></td>
+
+        </tr>
+
+<?php
     }
 }
+?>

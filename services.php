@@ -3,9 +3,11 @@
 
 if (isset($_GET['v'])) {
     $msg = $_GET['v'];
-    echo $msg;
 }
 
+if (isset($_GET['err'])) {
+    $errorMsg = $_GET['err'];
+}
 
 ?>
 
@@ -31,6 +33,24 @@ if (isset($_GET['v'])) {
                 </button>
             </div>
         </div> <?php  } ?>
+    <?php if (isset($errorMsg)) { ?>
+        <div class="errMsgPop">
+            <div class="deleteFace">
+                <h1>Login first</h1>
+                <p><?php echo $errorMsg; ?></p>
+                <button class="cancelPop" onclick="closeError()">Cancel</button>
+                <a class="errMsgPopBtn" href="seekerLogin.php">Login</a>
+            </div>
+        </div>
+        <script>
+            function closeError() {
+
+                var errBox = document.querySelector(".errMsgPop");
+                if (errBox) {
+                    errBox.classList.add("hello");
+                }
+            }
+        </script><?php  } ?>
 
     <div id="wrapper">
         <div class="header">
@@ -50,7 +70,7 @@ if (isset($_GET['v'])) {
                         </ul> -->
 
                     </li>
-                    <li><a href="">About Us</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                     <?php if (isset($_SESSION['email']) && $_SESSION['role'] == "user") { ?>
 
@@ -135,6 +155,13 @@ if (isset($_GET['v'])) {
                 }
             });
         });
+
+        // document
+        //     .getElementsByClassName("cancelPop")[0]
+        //     .addEventListener("click", function() {
+        //         document.getElementsByClassName("deletePop")[0].style.display = "none";
+        //         document.getElementsByClassName("deletePop")[0].style.opacity = 0;
+        //     });
     </script>
 </body>
 

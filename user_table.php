@@ -25,8 +25,8 @@
             <th>Name</th>
             <th>Area</th>
             <th>Profession</th>
-            <th>Phone Number</th>
             <th>Reviews</th>
+            <th>Detail</th>
         </tr>
     </thead>
     <tbody>
@@ -36,9 +36,14 @@
                 <td><?php echo $u['fullname']; ?></td>
                 <td><?php echo $u['area']; ?></td>
                 <td><?php echo $u['occupation']; ?></td>
-                <td><?php echo $u['phone']; ?></td>
+                <?php
+                if ($reviewCount > 0) { ?>
+                    <td> <?php echo round($averageRating, 1); ?><i class='bx bxs-star'></i> • <a href='view_user.php?id="<?php echo $u['id'] ?>"'> <?php echo $reviewCount; ?>Reviews </a></td>
+                <?php } else { ?>
+                    <td> Not reviewed yet </td>
+                <?php } ?>
+                <td><a href="">View Contact</a></td>
             </tr>
         <?php } ?>
     </tbody>
 </table>
-

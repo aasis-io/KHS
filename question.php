@@ -15,7 +15,7 @@ if (isset($_GET['v'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KHS - Home Page</title>
+    <title>KHS - Seeker or Provider?</title>
     <link rel="stylesheet" href="css/home.min.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/common.min.css">
@@ -35,14 +35,14 @@ if (isset($_GET['v'])) {
             <nav>
                 <ul class="nav-list">
                     <li><a href="index.php">Home</a></li>
-                    <li class="dropdown"><a href="javascript:void(0)">Services<i class='bx bxs-chevron-down'></i></a>
+                    <li class="dropdown"><a href="services.php">Services</a>
 
-                        <ul class="dropdown-menu">
+                        <!-- <ul class="dropdown-menu">
                             <li><a href="services.php">Plumber</a></li>
                             <li><a href="">Electrician</a></li>
                             <li><a href="">Carpenter</a></li>
                             <li><a href="">Painter</a></li>
-                        </ul>
+                        </ul> -->
 
                     </li>
                     <li><a href="">About Us</a></li>
@@ -70,11 +70,11 @@ if (isset($_GET['v'])) {
         <div class="container questionPage">
 
             <div class="questionWrap">
-                <h2>Are you a service seeker or a provider?</h2>
+                <h2>Who are you?</h2>
 
                 <div class="questionButtons">
-                    <a href="seekerLogin.php" class="btn-grad">Seeker</a>
-                    <a href="login.php" class="btn-grad btnWhite">Provider</a>
+                    <a href="seekerLogin.php" class="btn-grad">Service Seeker</a>
+                    <a href="login.php" class="btn-grad btnWhite">Service Provider</a>
                 </div>
             </div>
 

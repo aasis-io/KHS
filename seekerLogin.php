@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Seeker - Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.min.css">
 </head>
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
         }
         ?>
         <div class="form-container">
-            <h2>Login</h2>
+            <h2>Seeker Login</h2>
             <form method="post" novalidate>
                 <div class="input-content">
                     <div class="label-container">
@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
                 <button type="submit" name="submit">Sign In</button>
 
             </form>
-            <p>Not Registered? <a href="register.php">Sign Up Here</a></p>
+            <p>Not Registered? <a href="seekerRegister.php">Sign Up Here</a></p>
         </div>
         <a href="index.php" class="homeRedirect">Go To Home Page &nbsp;<i class="fa-solid fa-up-right-from-square"></i></a>
     </div>

@@ -125,11 +125,11 @@ ul {
   background: var(--dark-accent);
 }
 
-.dropdown {
+/* .dropdown {
   position: relative;
-}
+} */
 
-.dropdown-menu {
+/* .dropdown-menu {
   position: absolute;
   top: 100%;
   border-radius: 8px;
@@ -138,8 +138,8 @@ ul {
   display: block;
   display: none;
   visibility: visible;
-}
-.dropdown-menu > li {
+} */
+/* .dropdown-menu > li {
   min-width: 180px;
 }
 
@@ -159,7 +159,7 @@ ul {
 }
 .dropdown:hover a i {
   transform: rotate(180deg);
-}
+} */
 
 .heading {
   font-size: 31px;
@@ -611,6 +611,22 @@ a.cta-explore:hover {
   opacity: 0;
 }
 
+.errMsgPop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: var(--background-clr); */
+  background-color: rgba(221, 221, 221, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity 1s ease-out;
+}
+.errMsgPop.hello {
+  display: none;
+  opacity: 0;
+}
 .deleteFace {
   position: fixed;
   left: 50%;
@@ -632,7 +648,8 @@ a.cta-explore:hover {
 }
 
 .deleteFace > button,
-.deleteFace > a {
+.deleteFace > a,
+.errMsgPopBtn {
   font-size: 1rem;
   border: none;
   outline: none;
@@ -660,7 +677,12 @@ a.cta-explore:hover {
 .bxs-star {
   color: var(--orange-clr) !important;
 }
-
+.errMsgPopBtn {
+  background: var(--accent-clr) !important;
+}
+.errMsgPopBtn:hover {
+  background: var(--dark-accent) !important;
+}
 /*========
 Review
 ========*/
