@@ -38,11 +38,11 @@
                 <td><?php echo $u['occupation']; ?></td>
                 <?php
                 if ($reviewCount > 0) { ?>
-                    <td> <?php echo round($averageRating, 1); ?><i class='bx bxs-star'></i> • <a href='view_user.php?id="<?php echo $u['id'] ?>"'> <?php echo $reviewCount; ?>Reviews </a></td>
+                    <td> <?php echo round($averageRating, 1); ?><i class='bx bxs-star'></i> • <?php echo $reviewCount; ?> Reviews</td>
                 <?php } else { ?>
                     <td> Not reviewed yet </td>
                 <?php } ?>
-                <td><a href="">View Contact</a></td>
+                <td><a href=""><u>View Details</u></a></td>
             </tr>
         <?php } ?>
     </tbody>
